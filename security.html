@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Security Commands</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+
+body{
+  background:#020617;
+  color:white;
+  font-family:Arial,sans-serif;
+  padding:40px;
+}
+
+.card{
+  background:#0f172a;
+  border:1px solid #1e293b;
+  border-radius:24px;
+  padding:24px;
+}
+
+pre{
+  background:black;
+  color:#4ade80;
+  padding:20px;
+  border-radius:18px;
+  overflow:auto;
+}
+
+.btn{
+  background:#22d3ee;
+  color:black;
+  padding:12px 18px;
+  border-radius:12px;
+  font-weight:bold;
+  text-decoration:none;
+  display:inline-block;
+}
+
+.btn:hover{
+  background:#67e8f9;
+}
+
+.section{
+  margin-top:32px;
+}
+
+</style>
+</head>
+
+<body>
+
+<a href="index.html" class="btn">
+← Back Dashboard
+</a>
+
+<div class="card mt-8">
+
+<h1 class="text-5xl font-bold text-red-400 mb-6">
+Security Commands
+</h1>
+
+<p class="text-slate-400 text-lg mb-8">
+ACL / Port Security / Login / MAC Block / IP Block / Firewall
+</p>
+
+<!-- ACL -->
+<div class="section">
+
+<h2 class="text-3xl font-bold text-cyan-400 mb-4">
+ACL & IP Block
+</h2>
+
+<pre>
+show access-lists
+show ip access-lists
+show run | include access-group
+show run | section access-list
+</pre>
+
+<div class="mt-5 space-y-4 text-slate-300">
+
+<p>
+<strong>show access-lists</strong>
+→ ดู ACL ทั้งหมดที่ใช้ Block / Allow IP
+</p>
+
+<p>
+<strong>show ip access-lists</strong>
+→ ดู ACL แบบละเอียด พร้อม Hit Count
+</p>
+
+<p>
+<strong>show run | include access-group</strong>
+→ ดูว่า ACL ถูก Apply ที่ Interface ไหน
+</p>
+
+<p>
+<strong>show run | section access-list</strong>
+→ ดู Config ACL เต็มทั้งหมด
+</p>
+
+<p class="text-cyan-300">
+ใช้กับ: Router / L3 Switch / Firewall
+</p>
+
+</div>
+
+</div>
+
+<!-- PORT SECURITY -->
+<div class="section">
+
+<h2 class="text-3xl font-bold text-yellow-400 mb-4">
+Port Security / MAC Drop
+</h2>
+
+<pre>
+show port-security
+show port-security interface fa0/1
+show mac address-table
+show interfaces status err-disabled
+show errdisable recovery
+</pre>
+
+<div class="mt-5 space-y-4 text-slate-300">
+
+<p>
+<strong>show port-security</strong>
+→ ดูสถานะ Port Security ทุก Port
+</p>
+
+<p>
+<strong>show port-security interface fa0/1</strong>
+→ ดู MAC ที่ถูก Block หรือ Violation
+</p>
+
+<p>
+<strong>show mac address-table</strong>
+→ ดู MAC Learning บน Switch
+</p>
+
+<p>
+<strong>show interfaces status err-disabled</strong>
+→ ดู Port ที่โดน Shutdown จาก Security
+</p>
+
+<p>
+<strong>show errdisable recovery</strong>
+→ ดูระบบ Auto Recovery ของ Port
+</p>
+
+<p class="text-cyan-300">
+ใช้กับ: Cisco Switch
+</p>
+
+</div>
+
+</div>
+
+<!-- USER LOGIN -->
+<div class="section">
+
+<h2 class="text-3xl font-bold text-green-400 mb-4">
+User & Login Security
+</h2>
+
+<pre>
+show users
+show login
+show ssh
+show aaa sessions
+</pre>
+
+<div class="mt-5 space-y-4 text-slate-300">
+
+<p>
+<strong>show users</strong>
+→ ดู User ที่ Login อยู่
+</p>
+
+<p>
+<strong>show login</strong>
+→ ดู Login Status
+</p>
+
+<p>
+<strong>show ssh</strong>
+→ ดู SSH Session
+</p>
+
+<p>
+<strong>show aaa sessions</strong>
+→ ดู AAA Authentication Session
+</p>
+
+<p class="text-cyan-300">
+ใช้กับ: Router / Switch
+</p>
+
+</div>
+
+</div>
+
+<!-- FIREWALL -->
+<div class="section">
+
+<h2 class="text-3xl font-bold text-pink-400 mb-4">
+Firewall / NAT
+</h2>
+
+<pre>
+show conn
+show xlate
+show ip nat translations
+show ip nat statistics
+</pre>
+
+<div class="mt-5 space-y-4 text-slate-300">
+
+<p>
+<strong>show conn</strong>
+→ ดู Connection ที่ผ่าน Firewall
+</p>
+
+<p>
+<strong>show xlate</strong>
+→ ดู NAT Translation บน ASA
+</p>
+
+<p>
+<strong>show ip nat translations</strong>
+→ ดู NAT Session
+</p>
+
+<p>
+<strong>show ip nat statistics</strong>
+→ ดู NAT Statistics
+</p>
+
+<p class="text-cyan-300">
+ใช้กับ: Cisco ASA / Router
+</p>
+
+</div>
+
+</div>
+
+<!-- TROUBLESHOOT -->
+<div class="section">
+
+<h2 class="text-3xl font-bold text-red-400 mb-4">
+Security Troubleshooting
+</h2>
+
+<pre>
+ping
+traceroute
+show logging
+debug ip packet
+</pre>
+
+<div class="mt-5 space-y-4 text-slate-300">
+
+<p>
+<strong>ping</strong>
+→ ทดสอบ Connectivity
+</p>
+
+<p>
+<strong>traceroute</strong>
+→ ดูเส้นทาง Packet
+</p>
+
+<p>
+<strong>show logging</strong>
+→ ดู Security Logs
+</p>
+
+<p>
+<strong>debug ip packet</strong>
+→ Debug Packet แบบ Real-time
+</p>
+
+<p class="text-cyan-300">
+ใช้กับ: Router / Firewall
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>
