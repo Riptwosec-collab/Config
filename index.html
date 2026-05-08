@@ -68,6 +68,17 @@
       color:#22d3ee;
       text-shadow:0 0 15px rgba(34,211,238,.5);
     }
+
+    .search-box{
+      background:#020617;
+      border:1px solid #334155;
+      color:white;
+    }
+
+    .search-box:focus{
+      outline:none;
+      border-color:#22d3ee;
+    }
   </style>
 </head>
 
@@ -75,6 +86,7 @@
 
   <!-- HEADER -->
   <div class="sticky top-0 z-50 px-6 pt-5">
+
     <div class="topbar max-w-7xl mx-auto rounded-3xl px-8 py-5 flex flex-col lg:flex-row items-center justify-between">
 
       <div>
@@ -91,11 +103,12 @@
         <input
           type="text"
           placeholder="Search menu..."
-          class="bg-slate-950 border border-slate-700 rounded-xl px-5 py-3 text-white outline-none focus:border-cyan-400"
+          class="search-box rounded-xl px-5 py-3"
         />
       </div>
 
     </div>
+
   </div>
 
   <!-- HERO -->
@@ -113,7 +126,7 @@
 
     </div>
 
-    <!-- MENU GRID -->
+    <!-- GRID -->
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
 
       <!-- VLAN -->
@@ -160,7 +173,7 @@
         </div>
       </a>
 
-      <!-- INTERNET ISSUE -->
+      <!-- INTERNET -->
       <a href="./internet.html" class="menu-btn">
         <div class="menu-title text-cyan-400">
           PC Internet Issue
@@ -200,7 +213,7 @@
         </div>
 
         <div class="menu-desc">
-          ACL / Port Security / Login
+          ACL / Login / Port Security
         </div>
       </a>
 
@@ -245,6 +258,105 @@
 
         <div class="menu-desc">
           Policy / Drop / Traffic
+        </div>
+      </a>
+
+      <!-- FIREWALL -->
+      <a href="./firewall.html" class="menu-btn">
+        <div class="menu-title text-red-500">
+          Firewall
+        </div>
+
+        <div class="menu-desc">
+          ACL / NAT / Session / Security Policy
+        </div>
+      </a>
+
+      <!-- VPN -->
+      <a href="./vpn.html" class="menu-btn">
+        <div class="menu-title text-cyan-300">
+          VPN
+        </div>
+
+        <div class="menu-desc">
+          IPsec / Tunnel / Crypto Session
+        </div>
+      </a>
+
+      <!-- DHCP -->
+      <a href="./dhcp.html" class="menu-btn">
+        <div class="menu-title text-green-300">
+          DHCP
+        </div>
+
+        <div class="menu-desc">
+          DHCP Lease / Scope / IP Assign
+        </div>
+      </a>
+
+      <!-- DNS -->
+      <a href="./dns.html" class="menu-btn">
+        <div class="menu-title text-yellow-300">
+          DNS
+        </div>
+
+        <div class="menu-desc">
+          Name Resolve / DNS Check
+        </div>
+      </a>
+
+      <!-- INTERFACE -->
+      <a href="./interface.html" class="menu-btn">
+        <div class="menu-title text-pink-400">
+          Interface Status
+        </div>
+
+        <div class="menu-desc">
+          CRC / Duplex / Speed / Errors
+        </div>
+      </a>
+
+      <!-- NOC -->
+      <a href="./noc.html" class="menu-btn">
+        <div class="menu-title text-orange-400">
+          NOC Dashboard
+        </div>
+
+        <div class="menu-desc">
+          Monitoring / Incident / Troubleshooting
+        </div>
+      </a>
+
+      <!-- AI -->
+      <a href="./assistant.html" class="menu-btn">
+        <div class="menu-title text-sky-300">
+          AI Assistant
+        </div>
+
+        <div class="menu-desc">
+          Analyze Commands / Smart Troubleshoot
+        </div>
+      </a>
+
+      <!-- SWITCH -->
+      <a href="./switch.html" class="menu-btn">
+        <div class="menu-title text-lime-300">
+          Switch Commands
+        </div>
+
+        <div class="menu-desc">
+          STP / EtherChannel / MAC Table
+        </div>
+      </a>
+
+      <!-- ROUTER -->
+      <a href="./router.html" class="menu-btn">
+        <div class="menu-title text-emerald-300">
+          Router Commands
+        </div>
+
+        <div class="menu-desc">
+          Routing / WAN / MPLS / OSPF
         </div>
       </a>
 
