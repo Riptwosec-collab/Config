@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Switch Commands</title>
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+body{
+background:#020617;
+color:white;
+font-family:Arial;
+}
+.card{
+background:#0f172a;
+border:1px solid #1e293b;
+border-radius:24px;
+padding:28px;
+}
+pre{
+background:black;
+color:#4ade80;
+padding:20px;
+border-radius:16px;
+overflow:auto;
+}
+.btn{
+background:#22d3ee;
+color:black;
+padding:12px 18px;
+border-radius:12px;
+font-weight:bold;
+}
+</style>
+</head>
+
+<body class="p-8">
+
+<a href="./index.html" class="btn inline-block mb-6">
+← Back Dashboard
+</a>
+
+<div class="card max-w-5xl mx-auto">
+
+<h1 class="text-4xl font-black text-lime-400 mb-6">
+Switch Commands
+</h1>
+
+<pre>
+show spanning-tree
+show etherchannel summary
+show mac address-table
+show interfaces trunk
+show interfaces switchport
+show vlan brief
+show cdp neighbors
+show lldp neighbors
+</pre>
+
+<div class="space-y-4 mt-6 text-slate-300">
+
+<p><b>show spanning-tree</b><br>
+ดู STP Status</p>
+
+<p><b>show etherchannel summary</b><br>
+ดู Port-Channel</p>
+
+<p><b>show mac address-table</b><br>
+ดู MAC Table</p>
+
+<p><b>show interfaces trunk</b><br>
+ดู Trunk</p>
+
+<p><b>show interfaces switchport</b><br>
+ดู Port Mode</p>
+
+<p><b>show vlan brief</b><br>
+ดู VLAN</p>
+
+<p><b>show cdp neighbors</b><br>
+ดู Cisco Neighbor</p>
+
+<p><b>show lldp neighbors</b><br>
+ดู LLDP Neighbor</p>
+
+</div>
+
+</div>
+</body>
+</html>
