@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Firewall</title>
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+body{background:#020617;color:white;font-family:Arial;}
+.card{
+background:#0f172a;
+border:1px solid #1e293b;
+border-radius:24px;
+padding:28px;
+max-width:1000px;
+margin:auto;
+margin-top:40px;
+}
+pre{
+background:black;
+color:#4ade80;
+padding:20px;
+border-radius:18px;
+overflow:auto;
+}
+.btn{
+background:#22d3ee;
+color:black;
+padding:12px 18px;
+border-radius:12px;
+font-weight:bold;
+text-decoration:none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<a href="./index.html" class="btn">← Back Dashboard</a>
+
+<h1 class="text-4xl font-bold text-red-400 mt-6 mb-6">
+Firewall Commands
+</h1>
+
+<pre>
+show access-lists
+show conn
+show xlate
+show nat
+show run access-group
+</pre>
+
+<div class="space-y-4 mt-6 text-slate-300">
+
+<p><strong>show access-lists</strong><br>ดู ACL</p>
+
+<p><strong>show conn</strong><br>ดู Connection</p>
+
+<p><strong>show xlate</strong><br>ดู NAT Translation</p>
+
+<p><strong>show nat</strong><br>ดู NAT</p>
+
+<p><strong>show run access-group</strong><br>ดู Firewall Policy</p>
+
+<p class="text-cyan-400">
+ใช้กับ: Cisco ASA / Firewall
+</p>
+
+</div>
+
+</div>
+
+</body>
+</html>
