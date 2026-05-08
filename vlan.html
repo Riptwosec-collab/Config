@@ -1,4 +1,24 @@
 <!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>VLAN Commands</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+
+body{
+  background:#020617;
+  color:white;
+  font-family:Arial,sans-serif;
+  padding:40px;
+}
+
+.card{
+  background:#0f172a;
   border:1px solid #1e293b;
   border-radius:24px;
   padding:24px;
@@ -18,22 +38,23 @@ pre{
   padding:12px 18px;
   border-radius:12px;
   font-weight:bold;
+  text-decoration:none;
 }
+
 </style>
 </head>
+
 <body>
 
-<div class="max-w-5xl mx-auto p-8">
+<a href="index.html" class="btn">
+← Back Dashboard
+</a>
 
-  <a href="index.html" class="btn inline-block mb-6">
-    ← Back Dashboard
-  </a>
+<div class="card mt-8">
 
-  <div class="card">
-
-    <h1 class="text-4xl font-bold text-green-400 mb-6">
-      VLAN Commands
-    </h1>
+<h1 class="text-5xl font-bold text-green-400 mb-6">
+VLAN Commands
+</h1>
 
 <pre>
 show vlan brief
@@ -42,35 +63,33 @@ show run | sec vlan
 show mac address-table vlan 10
 </pre>
 
-    <div class="space-y-4 mt-6 text-slate-300 leading-8">
+<div class="mt-6 space-y-4 text-slate-300">
 
-      <p>
-        <strong>show vlan brief</strong>
-        → ดู VLAN ทั้งหมดและ Port
-      </p>
+<p>
+<strong>show vlan brief</strong>
+→ ดู VLAN ทั้งหมดและ Port
+</p>
 
-      <p>
-        <strong>show vlan</strong>
-        → ดูรายละเอียด VLAN แบบเต็ม
-      </p>
+<p>
+<strong>show vlan</strong>
+→ ดูรายละเอียด VLAN แบบเต็ม
+</p>
 
-      <p>
-        <strong>show run | sec vlan</strong>
-        → ดู Config VLAN
-      </p>
+<p>
+<strong>show run | sec vlan</strong>
+→ ดู Config VLAN
+</p>
 
-      <p>
-        <strong>show mac address-table vlan 10</strong>
-        → ดู MAC ใน VLAN
-      </p>
+<p>
+<strong>show mac address-table vlan 10</strong>
+→ ดู MAC ใน VLAN
+</p>
 
-      <div class="text-cyan-400 pt-4">
-        ใช้กับ: Cisco Switch
-      </div>
+<p class="text-cyan-300">
+ใช้กับ: Cisco Switch
+</p>
 
-    </div>
-
-  </div>
+</div>
 
 </div>
 
