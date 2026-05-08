@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOC Dashboard</title>
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+body{
+background:#020617;
+color:white;
+font-family:Arial;
+}
+.card{
+background:#0f172a;
+border:1px solid #1e293b;
+border-radius:24px;
+padding:28px;
+}
+pre{
+background:black;
+color:#4ade80;
+padding:20px;
+border-radius:16px;
+overflow:auto;
+}
+.btn{
+background:#22d3ee;
+color:black;
+padding:12px 18px;
+border-radius:12px;
+font-weight:bold;
+}
+</style>
+</head>
+
+<body class="p-8">
+
+<a href="./index.html" class="btn inline-block mb-6">
+← Back Dashboard
+</a>
+
+<div class="card max-w-5xl mx-auto">
+
+<h1 class="text-4xl font-black text-orange-400 mb-6">
+NOC Dashboard
+</h1>
+
+<pre>
+show logging
+show interfaces
+show ip route
+show cpu history
+show memory statistics
+ping gateway
+traceroute 8.8.8.8
+show spanning-tree
+show vlan brief
+show ip bgp summary
+</pre>
+
+<div class="space-y-4 mt-6 text-slate-300">
+
+<p><b>show logging</b><br>
+ดู Logs ล่าสุด</p>
+
+<p><b>show interfaces</b><br>
+ดู Interface Status</p>
+
+<p><b>show ip route</b><br>
+ดู Routing</p>
+
+<p><b>show cpu history</b><br>
+ดู CPU</p>
+
+<p><b>show memory statistics</b><br>
+ดู RAM</p>
+
+<p><b>ping gateway</b><br>
+เช็ค Gateway</p>
+
+<p><b>traceroute 8.8.8.8</b><br>
+ตรวจสอบ WAN</p>
+
+<p><b>show spanning-tree</b><br>
+ดู STP Block</p>
+
+<p><b>show vlan brief</b><br>
+ดู VLAN</p>
+
+<p><b>show ip bgp summary</b><br>
+ดู BGP Status</p>
+
+</div>
+
+</div>
+</body>
+</html>
