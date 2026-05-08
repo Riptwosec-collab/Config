@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+  border:1px solid #1e293b;
+  border-radius:24px;
+  padding:24px;
+}
+
+pre{
+  background:black;
+  color:#4ade80;
+  padding:20px;
+  border-radius:18px;
+  overflow:auto;
+}
+
+.btn{
+  background:#22d3ee;
+  color:black;
+  padding:12px 18px;
+  border-radius:12px;
+  font-weight:bold;
+}
+</style>
+</head>
+<body>
+
+<div class="max-w-5xl mx-auto p-8">
+
+  <a href="index.html" class="btn inline-block mb-6">
+    ← Back Dashboard
+  </a>
+
+  <div class="card">
+
+    <h1 class="text-4xl font-bold text-green-400 mb-6">
+      VLAN Commands
+    </h1>
+
+<pre>
+show vlan brief
+show vlan
+show run | sec vlan
+show mac address-table vlan 10
+</pre>
+
+    <div class="space-y-4 mt-6 text-slate-300 leading-8">
+
+      <p>
+        <strong>show vlan brief</strong>
+        → ดู VLAN ทั้งหมดและ Port
+      </p>
+
+      <p>
+        <strong>show vlan</strong>
+        → ดูรายละเอียด VLAN แบบเต็ม
+      </p>
+
+      <p>
+        <strong>show run | sec vlan</strong>
+        → ดู Config VLAN
+      </p>
+
+      <p>
+        <strong>show mac address-table vlan 10</strong>
+        → ดู MAC ใน VLAN
+      </p>
+
+      <div class="text-cyan-400 pt-4">
+        ใช้กับ: Cisco Switch
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>
