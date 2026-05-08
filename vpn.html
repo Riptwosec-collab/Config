@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VPN Commands</title>
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+body{
+background:#020617;
+color:white;
+font-family:Arial;
+}
+.card{
+background:#0f172a;
+border:1px solid #1e293b;
+border-radius:24px;
+padding:28px;
+}
+pre{
+background:black;
+color:#4ade80;
+padding:20px;
+border-radius:16px;
+overflow:auto;
+}
+.btn{
+background:#22d3ee;
+color:black;
+padding:12px 18px;
+border-radius:12px;
+font-weight:bold;
+}
+</style>
+</head>
+
+<body class="p-8">
+
+<a href="./index.html" class="btn inline-block mb-6">
+← Back Dashboard
+</a>
+
+<div class="card max-w-5xl mx-auto">
+
+<h1 class="text-4xl font-black text-cyan-400 mb-6">
+VPN Commands
+</h1>
+
+<pre>
+show crypto isakmp sa
+show crypto ipsec sa
+show vpn-sessiondb
+show tunnel-group
+show crypto session
+show interface tunnel
+show run crypto
+show logging
+</pre>
+
+<div class="space-y-4 mt-6 text-slate-300">
+
+<p><b>show crypto isakmp sa</b><br>
+ดู Phase 1 VPN Status</p>
+
+<p><b>show crypto ipsec sa</b><br>
+ดู IPsec Tunnel Traffic</p>
+
+<p><b>show vpn-sessiondb</b><br>
+ดู VPN Users</p>
+
+<p><b>show tunnel-group</b><br>
+ดู VPN Group</p>
+
+<p><b>show crypto session</b><br>
+ดู Tunnel Summary</p>
+
+<p><b>show interface tunnel</b><br>
+ดู Tunnel Interface</p>
+
+<p><b>show run crypto</b><br>
+ดู Crypto Config</p>
+
+<p><b>show logging</b><br>
+ดู VPN Logs</p>
+
+<p class="text-cyan-400">
+ใช้งานกับ: Cisco ASA / ISR / SD-WAN
+</p>
+
+</div>
+
+</div>
+</body>
+</html>
