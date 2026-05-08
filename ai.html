@@ -1,417 +1,342 @@
-<!DOCTYPE html>
-<html lang="th">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>AI Assistant</title>
-
-<script src="https://cdn.tailwindcss.com"></script>
-
-<style>
-
-body{
-  background:#020617;
-  color:white;
-  font-family:Arial,sans-serif;
-}
-
-.card{
-  background:#0f172a;
-  border:1px solid #1e293b;
-  border-radius:28px;
-  padding:30px;
-  box-shadow:0 0 35px rgba(0,0,0,.4);
-}
-
-.btn{
-  background:#22d3ee;
-  color:black;
-  padding:14px 22px;
-  border-radius:14px;
-  font-weight:bold;
-  transition:.25s;
-}
-
-.btn:hover{
-  background:#67e8f9;
-  transform:translateY(-2px);
-}
-
-.input{
-  width:100%;
-  background:black;
-  border:1px solid #334155;
-  border-radius:18px;
-  padding:16px;
-  color:white;
-  outline:none;
-}
-
-.input:focus{
-  border-color:#22d3ee;
-}
-
-.result{
-  background:#000;
-  border:1px solid #1e293b;
-  border-radius:20px;
-  padding:24px;
-  margin-top:25px;
-  color:#4ade80;
-  white-space:pre-wrap;
-  line-height:1.8;
-}
-
-.badge{
-  display:inline-block;
-  padding:6px 12px;
-  border-radius:999px;
-  font-size:13px;
-  font-weight:bold;
-}
-
-.critical{
-  background:#7f1d1d;
-  color:#fecaca;
-}
-
-.warning{
-  background:#78350f;
-  color:#fde68a;
-}
-
-.normal{
-  background:#064e3b;
-  color:#a7f3d0;
-}
-
-</style>
-</head>
-
-<body class="p-8">
-
-<!-- BACK -->
-<a href="index.html" class="btn inline-block mb-6">
-← Back Dashboard
-</a>
-
-<!-- CARD -->
-<div class="card max-w-6xl mx-auto">
-
-<h1 class="text-5xl font-black text-cyan-400 mb-3">
-AI Network Assistant
-</h1>
-
-<p class="text-slate-400 mb-8">
-Smart Troubleshooting • Network Incident Analysis • Cisco Command Assistant
-</p>
-
-<!-- INPUT -->
-<input
-id="question"
-type="text"
-placeholder="เช่น internet ใช้งานไม่ได้ / ospf down / mac drop / high cpu"
-class="input mb-5"
-/>
-
-<!-- BUTTON -->
-<button onclick="analyzeIssue()" class="btn">
-Analyze Problem
-</button>
-
-<!-- RESULT -->
-<div id="result" class="result">
-
-พร้อมวิเคราะห์ปัญหา Network...
-
-</div>
-
-</div>
+<!-- เพิ่มแทน function analyzeNetwork() เดิม -->
 
 <script>
 
-function analyzeIssue(){
+function analyzeNetwork(){
 
-  const q = document.getElementById("question").value.toLowerCase();
-  const result = document.getElementById("result");
+const input = document.getElementById("commandInput").value.toLowerCase();
+const result = document.getElementById("result");
 
-  // INTERNET
-  if(q.includes("internet")){
+let analysis = `
+==============================
+🤖 AI NETWORK ANALYSIS
+ระบบวิเคราะห์ปัญหา Network อัตโนมัติ
+==============================
 
-    result.innerHTML = `
-<span class="badge critical">CRITICAL</span>
-
-[ INTERNET ISSUE ]
-
-Possible Cause:
-• Gateway Down
-• ACL Block
-• DHCP Problem
-• DNS Failure
-• Interface Down
-
-Recommended Commands:
-
-show ip interface brief
-show access-lists
-show arp
-show mac address-table
-show ip route
-show logging
-
-Troubleshooting:
-1. ตรวจสอบ Interface
-2. ตรวจสอบ Gateway
-3. ตรวจสอบ ACL
-4. ตรวจสอบ DNS
-5. ตรวจสอบ DHCP
 `;
 
-  }
+if(input.trim() === ""){
+analysis += `
+❌ ไม่พบข้อมูล Command Output
 
-  // MAC DROP
-  else if(q.includes("mac")){
+กรุณาวาง:
+- show interfaces
+- show logging
+- show access-lists
+- show ip route
+- show port-security
 
-    result.innerHTML = `
-<span class="badge warning">WARNING</span>
+แล้วกด Analyze
+`;
+result.innerText = analysis;
+return;
+}
 
-[ MAC DROP DETECTED ]
+/* =========================
+MAC DROP
+========================= */
 
-Possible Cause:
-• Port Security Violation
-• MAC Flooding
-• Errdisable
-• Sticky MAC Conflict
+if(
+input.includes("psecure") ||
+input.includes("err-disabled") ||
+input.includes("security violation")
+){
 
-Commands:
+analysis += `
 
+━━━━━━━━━━━━━━━━━━━━━━
+🚨 พบปัญหา: MAC ADDRESS DROP
+━━━━━━━━━━━━━━━━━━━━━━
+
+📌 สาเหตุที่เป็นไปได้
+• Port Security ทำงาน
+• MAC Address เกิน Limit
+• มีการเสียบอุปกรณ์ใหม่
+• Interface ถูก Err-disable
+
+📌 คำสั่งตรวจสอบ
 show port-security
+show port-security interface gi1/0/1
+show interfaces status err-disabled
 show mac address-table
-show interfaces status
 show errdisable recovery
-show logging
 
-Fix:
-• clear port-security sticky
-• shutdown / no shutdown
-• increase maximum MAC
+📌 วิธีแก้ไข
+interface gi1/0/1
+shutdown
+no shutdown
+
+หรือเปิด Recovery อัตโนมัติ
+errdisable recovery cause psecure-violation
+
+📌 อุปกรณ์ที่ใช้
+Cisco Switch
+
 `;
+}
 
-  }
+/* =========================
+IP BLOCK
+========================= */
 
-  // IP BLOCK
-  else if(q.includes("ip")){
+if(
+input.includes("deny ip") ||
+input.includes("access-list") ||
+input.includes("acl")
+){
 
-    result.innerHTML = `
-<span class="badge critical">CRITICAL</span>
+analysis += `
 
-[ IP BLOCK ISSUE ]
+━━━━━━━━━━━━━━━━━━━━━━
+🚨 พบปัญหา: IP ถูก Block
+━━━━━━━━━━━━━━━━━━━━━━
 
-Possible Cause:
-• ACL Deny
-• Firewall Rule
-• Dynamic Block
-• Security Policy
+📌 สาเหตุที่เป็นไปได้
+• ACL Block IP
+• Firewall Policy Block
+• มี deny rule
+• NAT ไม่ถูกต้อง
 
-Commands:
-
+📌 คำสั่งตรวจสอบ
 show access-lists
-show run | include access-group
+show run | sec access-list
 show conn
 show logging
+show ip nat translations
 
-Fix:
-• ตรวจสอบ ACL
-• Allow Source IP
-• ตรวจสอบ Firewall Policy
+📌 วิธีตรวจสอบเพิ่มเติม
+• ตรวจ deny any any
+• เช็คลำดับ ACL
+• ตรวจสอบ NAT
+• ตรวจสอบ Security Policy
+
+📌 อุปกรณ์ที่ใช้
+Router / Firewall
+
 `;
+}
 
-  }
+/* =========================
+INTERFACE ERROR
+========================= */
 
-  // OSPF
-  else if(q.includes("ospf")){
+if(
+input.includes("crc") ||
+input.includes("input errors") ||
+input.includes("duplex")
+){
 
-    result.innerHTML = `
-<span class="badge warning">WARNING</span>
+analysis += `
 
-[ OSPF NEIGHBOR DOWN ]
+━━━━━━━━━━━━━━━━━━━━━━
+🚨 พบปัญหา: Interface Error
+━━━━━━━━━━━━━━━━━━━━━━
 
-Commands:
+📌 อาการที่พบ
+• CRC Error
+• Input Error
+• Duplex Mismatch
+• Packet Drop
 
-show ip ospf neighbor
-show ip route
-show ip protocols
-debug ip ospf adj
+📌 สาเหตุที่เป็นไปได้
+• สาย LAN เสีย
+• SFP มีปัญหา
+• Speed/Duplex ไม่ตรงกัน
+• Interface ใช้งานหนัก
 
-Possible Cause:
-• Area Mismatch
-• MTU Mismatch
-• Authentication Fail
-• Interface Down
+📌 คำสั่งตรวจสอบ
+show interfaces
+show interfaces counters errors
+show controllers ethernet-controller
+
+📌 วิธีแก้ไข
+• เปลี่ยนสาย LAN
+• ตรวจ Speed/Duplex
+• เปลี่ยน SFP
+• เช็ค Utilization
+
+📌 อุปกรณ์ที่ใช้
+Router / Switch
+
 `;
+}
 
-  }
+/* =========================
+SDWAN
+========================= */
 
-  // BGP
-  else if(q.includes("bgp")){
+if(
+input.includes("bfd") ||
+input.includes("omp") ||
+input.includes("control connections")
+){
 
-    result.innerHTML = `
-<span class="badge warning">WARNING</span>
+analysis += `
 
-[ BGP PEER DOWN ]
+━━━━━━━━━━━━━━━━━━━━━━
+🚨 พบปัญหา: SD-WAN DOWN
+━━━━━━━━━━━━━━━━━━━━━━
 
-Commands:
+📌 สาเหตุที่เป็นไปได้
+• BFD Down
+• OMP Peer หลุด
+• Control Connection Down
+• ISP มีปัญหา
 
-show ip bgp summary
-show ip route bgp
-show tcp brief
-
-Possible Cause:
-• ASN Mismatch
-• Firewall Block
-• Neighbor Unreachable
-`;
-
-  }
-
-  // CPU
-  else if(q.includes("cpu")){
-
-    result.innerHTML = `
-<span class="badge critical">CRITICAL</span>
-
-[ HIGH CPU USAGE ]
-
-Commands:
-
-show processes cpu sorted
-show cpu history
-show memory statistics
-
-Possible Cause:
-• Broadcast Storm
-• Loop
-• DDoS
-• Routing Flap
-`;
-
-  }
-
-  // DHCP
-  else if(q.includes("dhcp")){
-
-    result.innerHTML = `
-<span class="badge warning">WARNING</span>
-
-[ DHCP ISSUE ]
-
-Commands:
-
-show ip dhcp binding
-show ip dhcp pool
-show logging
-
-Possible Cause:
-• Pool Full
-• DHCP Server Down
-• VLAN Problem
-`;
-
-  }
-
-  // DNS
-  else if(q.includes("dns")){
-
-    result.innerHTML = `
-<span class="badge warning">WARNING</span>
-
-[ DNS ISSUE ]
-
-Commands:
-
-nslookup google.com
-ping 8.8.8.8
-show hosts
-
-Possible Cause:
-• DNS Server Down
-• Internet Fail
-• ACL Block
-`;
-
-  }
-
-  // SDWAN
-  else if(q.includes("sdwan")){
-
-    result.innerHTML = `
-<span class="badge critical">CRITICAL</span>
-
-[ SD-WAN TUNNEL DOWN ]
-
-Commands:
-
+📌 คำสั่งตรวจสอบ
 show sdwan bfd sessions
 show sdwan omp peers
 show sdwan control connections
 
-Possible Cause:
-• Tunnel Loss
-• WAN Failure
-• Control Connection Down
+📌 วิธีตรวจสอบเพิ่มเติม
+• Ping WAN Gateway
+• ตรวจ Certificate
+• ตรวจ vSmart Reachable
+• ตรวจ Internet ISP
+
+📌 อุปกรณ์ที่ใช้
+Cisco SD-WAN Edge
+
 `;
+}
 
-  }
+/* =========================
+INTERFACE DOWN
+========================= */
 
-  // INTERFACE
-  else if(q.includes("interface")){
+if(
+input.includes("administratively down") ||
+input.includes("line protocol down")
+){
 
-    result.innerHTML = `
-<span class="badge warning">WARNING</span>
+analysis += `
 
-[ INTERFACE ISSUE ]
+━━━━━━━━━━━━━━━━━━━━━━
+🚨 พบปัญหา: Interface Down
+━━━━━━━━━━━━━━━━━━━━━━
 
-Commands:
+📌 สาเหตุที่เป็นไปได้
+• Port Shutdown
+• สาย LAN หลุด
+• SFP ไม่ทำงาน
+• VLAN ผิด
 
-show interfaces
+📌 คำสั่งตรวจสอบ
+show ip interface brief
 show interfaces status
-show interface counters errors
+show logging
 
-Possible Cause:
-• CRC Error
-• Duplex Mismatch
-• Cable Problem
-• Interface Down
+📌 วิธีแก้ไข
+interface gi1/0/1
+no shutdown
+
+📌 ตรวจสอบเพิ่มเติม
+• เช็คสาย
+• เช็ค VLAN
+• เช็ค Switch Port
+
 `;
+}
 
-  }
+/* =========================
+PING FAIL
+========================= */
 
-  else{
+if(
+input.includes("request timed out") ||
+input.includes("destination host unreachable")
+){
 
-    result.innerHTML = `
-<span class="badge normal">READY</span>
+analysis += `
 
-ไม่พบคำที่วิเคราะห์ได้
+━━━━━━━━━━━━━━━━━━━━━━
+🚨 พบปัญหา: ใช้งาน Internet ไม่ได้
+━━━━━━━━━━━━━━━━━━━━━━
 
-ลองใช้:
-• internet
-• mac drop
-• ip block
-• ospf
-• bgp
-• cpu
-• dhcp
-• dns
-• sdwan
-• interface
+📌 สาเหตุที่เป็นไปได้
+• Gateway Down
+• VLAN ผิด
+• ACL Block
+• Routing ผิด
+• ISP Down
+
+📌 คำสั่งตรวจสอบ
+ping 8.8.8.8
+traceroute 8.8.8.8
+show arp
+show ip route
+show access-lists
+
+📌 วิธีตรวจสอบ
+• Ping Gateway
+• ตรวจ DHCP
+• ตรวจ DNS
+• ตรวจ Firewall
+
+📌 อุปกรณ์ที่ใช้
+Router / Firewall / Switch
+
 `;
+}
 
-  }
+/* =========================
+CPU HIGH
+========================= */
+
+if(
+input.includes("cpu") ||
+input.includes("high cpu")
+){
+
+analysis += `
+
+━━━━━━━━━━━━━━━━━━━━━━
+🚨 พบปัญหา: CPU สูง
+━━━━━━━━━━━━━━━━━━━━━━
+
+📌 คำสั่งตรวจสอบ
+show processes cpu
+show processes cpu history
+show memory statistics
+
+📌 สาเหตุที่เป็นไปได้
+• Broadcast Storm
+• Loop Network
+• Traffic สูง
+• Process ค้าง
+
+📌 วิธีแก้
+• ตรวจ STP
+• ตรวจ Loop
+• Restart Process
+• ตรวจ Traffic
+
+`;
+}
+
+/* =========================
+NO MATCH
+========================= */
+
+if(analysis.includes("ระบบวิเคราะห์ปัญหา") && analysis.length < 200){
+
+analysis += `
+
+✅ ไม่พบปัญหาที่ระบบรู้จัก
+
+ลองเพิ่ม Command:
+• show interfaces
+• show logging
+• show access-lists
+• show ip route
+• show port-security
+
+เพื่อให้ AI วิเคราะห์ได้ละเอียดขึ้น
+`;
+}
+
+result.innerText = analysis;
 
 }
 
 </script>
-
-</body>
-</html>
