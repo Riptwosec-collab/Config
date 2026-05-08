@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DNS Commands</title>
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+body{
+background:#020617;
+color:white;
+font-family:Arial;
+}
+.card{
+background:#0f172a;
+border:1px solid #1e293b;
+border-radius:24px;
+padding:28px;
+}
+pre{
+background:black;
+color:#4ade80;
+padding:20px;
+border-radius:16px;
+overflow:auto;
+}
+.btn{
+background:#22d3ee;
+color:black;
+padding:12px 18px;
+border-radius:12px;
+font-weight:bold;
+}
+</style>
+</head>
+
+<body class="p-8">
+
+<a href="./index.html" class="btn inline-block mb-6">
+← Back Dashboard
+</a>
+
+<div class="card max-w-5xl mx-auto">
+
+<h1 class="text-4xl font-black text-yellow-400 mb-6">
+DNS Commands
+</h1>
+
+<pre>
+ping 8.8.8.8
+ping google.com
+nslookup google.com
+show hosts
+show run | include name-server
+traceroute 8.8.8.8
+</pre>
+
+<div class="space-y-4 mt-6 text-slate-300">
+
+<p><b>ping 8.8.8.8</b><br>
+ทดสอบ Internet</p>
+
+<p><b>ping google.com</b><br>
+ทดสอบ DNS Resolve</p>
+
+<p><b>nslookup google.com</b><br>
+เช็ค DNS Server</p>
+
+<p><b>show hosts</b><br>
+ดู DNS Cache</p>
+
+<p><b>show run | include name-server</b><br>
+ดู DNS Config</p>
+
+<p><b>traceroute 8.8.8.8</b><br>
+ตรวจสอบเส้นทาง</p>
+
+<p class="text-cyan-400">
+ใช้งานกับ: Router / Switch / Linux
+</p>
+
+</div>
+
+</div>
+</body>
+</html>
