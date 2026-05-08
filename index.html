@@ -1,165 +1,261 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-<title>Cisco Enterprise Dashboard</title>
+  <title>Cisco Enterprise Dashboard</title>
 
-<script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
 
-<style>
+  <style>
+    body{
+      background:#020617;
+      color:white;
+      font-family:Arial,sans-serif;
+    }
 
-body{
-  margin:0;
-  font-family:Arial,sans-serif;
-  background:#020617;
-  color:white;
-}
+    .card{
+      background:#0f172a;
+      border:1px solid #1e293b;
+      border-radius:24px;
+      padding:24px;
+      transition:.25s;
+      box-shadow:0 0 25px rgba(0,0,0,.35);
+    }
 
-.card{
-  background:#0f172a;
-  border:1px solid #1e293b;
-  border-radius:24px;
-  padding:24px;
-  transition:.25s;
-}
+    .card:hover{
+      transform:translateY(-4px);
+      border-color:#22d3ee;
+      box-shadow:0 0 30px rgba(34,211,238,.18);
+    }
 
-.card:hover{
-  border-color:#22d3ee;
-  transform:translateY(-4px);
-}
+    .menu-btn{
+      display:block;
+      background:#0f172a;
+      border:1px solid #1e293b;
+      padding:22px;
+      border-radius:20px;
+      text-decoration:none;
+      color:white;
+      transition:.25s;
+    }
 
-.menu-btn{
-  display:block;
-  background:#0f172a;
-  border:1px solid #1e293b;
-  padding:24px;
-  border-radius:20px;
-  text-decoration:none;
-  color:white;
-  transition:.25s;
-}
+    .menu-btn:hover{
+      background:#111827;
+      border-color:#22d3ee;
+      transform:translateY(-3px);
+    }
 
-.menu-btn:hover{
-  background:#111827;
-  border-color:#22d3ee;
-}
+    .menu-title{
+      font-size:22px;
+      font-weight:bold;
+      margin-bottom:10px;
+    }
 
-</style>
+    .menu-desc{
+      color:#94a3b8;
+      font-size:14px;
+    }
+
+    .topbar{
+      background:rgba(15,23,42,.85);
+      backdrop-filter:blur(12px);
+      border:1px solid #1e293b;
+    }
+
+    .glow{
+      color:#22d3ee;
+      text-shadow:0 0 15px rgba(34,211,238,.5);
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="max-w-7xl mx-auto p-10">
+  <!-- HEADER -->
+  <div class="sticky top-0 z-50 px-6 pt-5">
+    <div class="topbar max-w-7xl mx-auto rounded-3xl px-8 py-5 flex flex-col lg:flex-row items-center justify-between">
 
-<div class="text-center mb-12">
+      <div>
+        <h1 class="text-4xl font-black glow">
+          Cisco Enterprise Dashboard
+        </h1>
 
-<h1 class="text-6xl font-bold text-cyan-400 mb-4">
-Cisco Enterprise Dashboard
-</h1>
+        <p class="text-slate-400 mt-2">
+          Network Engineer / NOC / SD-WAN Toolkit
+        </p>
+      </div>
 
-<p class="text-slate-400 text-xl">
-Network Engineer / NOC / SD-WAN Toolkit
-</p>
+      <div class="mt-5 lg:mt-0">
+        <input
+          type="text"
+          placeholder="Search menu..."
+          class="bg-slate-950 border border-slate-700 rounded-xl px-5 py-3 text-white outline-none focus:border-cyan-400"
+        />
+      </div>
 
-</div>
+    </div>
+  </div>
 
-<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+  <!-- HERO -->
+  <div class="max-w-7xl mx-auto px-6 pt-14 pb-10">
 
-<a href="vlan.html" class="menu-btn">
-<h2 class="text-3xl font-bold text-green-400 mb-3">
-VLAN Commands
-</h2>
+    <div class="text-center mb-14">
 
-<p class="text-slate-400">
-Switch VLAN / Access / MAC Table
-</p>
-</a>
+      <h2 class="text-6xl font-black mb-5 glow">
+        Cisco Learning Platform
+      </h2>
 
-<a href="trunk.html" class="menu-btn">
-<h2 class="text-3xl font-bold text-orange-400 mb-3">
-Trunk Commands
-</h2>
+      <p class="text-slate-400 text-xl">
+        VLAN / Routing / Security / SD-WAN / Wireless / Troubleshooting
+      </p>
 
-<p class="text-slate-400">
-Trunk / STP / Switchport
-</p>
-</a>
+    </div>
 
-<a href="routing.html" class="menu-btn">
-<h2 class="text-3xl font-bold text-emerald-400 mb-3">
-Routing Commands
-</h2>
+    <!-- MENU GRID -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
 
-<p class="text-slate-400">
-OSPF / BGP / Routing Table
-</p>
-</a>
+      <!-- VLAN -->
+      <a href="./vlan.html" class="menu-btn">
+        <div class="menu-title text-green-400">
+          VLAN Commands
+        </div>
 
-<a href="monitor.html" class="menu-btn">
-<h2 class="text-3xl font-bold text-pink-400 mb-3">
-Monitoring
-</h2>
+        <div class="menu-desc">
+          Switch VLAN / Access / MAC Table
+        </div>
+      </a>
 
-<p class="text-slate-400">
-CPU / Memory / Interface
-</p>
-</a>
+      <!-- TRUNK -->
+      <a href="./trunk.html" class="menu-btn">
+        <div class="menu-title text-orange-400">
+          Trunk Commands
+        </div>
 
-<a href="internet_issue.html" class="menu-btn">
-<h2 class="text-3xl font-bold text-cyan-400 mb-3">
-PC Internet Issue
-</h2>
+        <div class="menu-desc">
+          Trunk / STP / Switchport
+        </div>
+      </a>
 
-<p class="text-slate-400">
-Ping / Gateway / ACL
-</p>
-</a>
+      <!-- ROUTING -->
+      <a href="./routing.html" class="menu-btn">
+        <div class="menu-title text-emerald-400">
+          Routing Commands
+        </div>
 
-<a href="mac_drop.html" class="menu-btn">
-<h2 class="text-3xl font-bold text-red-400 mb-3">
-MAC Drop
-</h2>
+        <div class="menu-desc">
+          OSPF / BGP / Routing Table
+        </div>
+      </a>
 
-<p class="text-slate-400">
-Port Security / Errdisable
-</p>
-</a>
+      <!-- MONITOR -->
+      <a href="./monitor.html" class="menu-btn">
+        <div class="menu-title text-pink-400">
+          Monitoring
+        </div>
 
-<a href="ip_block.html" class="menu-btn">
-<h2 class="text-3xl font-bold text-yellow-400 mb-3">
-IP Block
-</h2>
+        <div class="menu-desc">
+          CPU / Memory / Interface
+        </div>
+      </a>
 
-<p class="text-slate-400">
-ACL / Firewall / NAT
-</p>
-</a>
+      <!-- INTERNET ISSUE -->
+      <a href="./internet.html" class="menu-btn">
+        <div class="menu-title text-cyan-400">
+          PC Internet Issue
+        </div>
 
-<a href="sdwan.html" class="menu-btn">
-<h2 class="text-3xl font-bold text-blue-400 mb-3">
-SD-WAN
-</h2>
+        <div class="menu-desc">
+          Ping / Gateway / ACL / DHCP
+        </div>
+      </a>
 
-<p class="text-slate-400">
-OMP / BFD / Tunnel
-</p>
-</a>
+      <!-- MAC DROP -->
+      <a href="./macdrop.html" class="menu-btn">
+        <div class="menu-title text-red-400">
+          MAC Drop
+        </div>
 
-<a href="security.html" class="menu-btn">
-<h2 class="text-3xl font-bold text-purple-400 mb-3">
-Security
-</h2>
+        <div class="menu-desc">
+          Port Security / Errdisable
+        </div>
+      </a>
 
-<p class="text-slate-400">
-ACL / Users / Port Security
-</p>
-</a>
+      <!-- IP BLOCK -->
+      <a href="./ipblock.html" class="menu-btn">
+        <div class="menu-title text-yellow-400">
+          IP Block
+        </div>
 
-</div>
+        <div class="menu-desc">
+          ACL / Firewall / Security
+        </div>
+      </a>
 
-</div>
+      <!-- SECURITY -->
+      <a href="./security.html" class="menu-btn">
+        <div class="menu-title text-rose-400">
+          Security
+        </div>
+
+        <div class="menu-desc">
+          ACL / Port Security / Login
+        </div>
+      </a>
+
+      <!-- SDWAN -->
+      <a href="./sdwan.html" class="menu-btn">
+        <div class="menu-title text-sky-400">
+          SD-WAN
+        </div>
+
+        <div class="menu-desc">
+          Tunnel / OMP / BFD
+        </div>
+      </a>
+
+      <!-- WIRELESS -->
+      <a href="./wireless.html" class="menu-btn">
+        <div class="menu-title text-indigo-400">
+          Wireless
+        </div>
+
+        <div class="menu-desc">
+          AP / WLAN / Client
+        </div>
+      </a>
+
+      <!-- BACKUP -->
+      <a href="./backup.html" class="menu-btn">
+        <div class="menu-title text-purple-400">
+          Backup & Logs
+        </div>
+
+        <div class="menu-desc">
+          Config Backup / Syslog / Archive
+        </div>
+      </a>
+
+      <!-- QOS -->
+      <a href="./qos.html" class="menu-btn">
+        <div class="menu-title text-blue-400">
+          QoS
+        </div>
+
+        <div class="menu-desc">
+          Policy / Drop / Traffic
+        </div>
+      </a>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div class="text-center text-slate-600 mt-20 pb-10">
+      Cisco Enterprise Dashboard • Premium Dark UI
+    </div>
+
+  </div>
 
 </body>
 </html>
