@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Routing Commands</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+
+body{
+  background:#020617;
+  color:white;
+  font-family:Arial,sans-serif;
+  padding:40px;
+}
+
+.card{
+  background:#0f172a;
+  border:1px solid #1e293b;
+  border-radius:24px;
+  padding:24px;
+}
+
+pre{
+  background:black;
+  color:#4ade80;
+  padding:20px;
+  border-radius:18px;
+}
+
+.btn{
+  background:#22d3ee;
+  color:black;
+  padding:12px 18px;
+  border-radius:12px;
+  font-weight:bold;
+  text-decoration:none;
+}
+
+</style>
+</head>
+
+<body>
+
+<a href="index.html" class="btn">
+← Back Dashboard
+</a>
+
+<div class="card mt-8">
+
+<h1 class="text-5xl font-bold text-emerald-400 mb-6">
+Routing Commands
+</h1>
+
+<pre>
+show ip route
+show ip ospf neighbor
+show ip bgp summary
+show arp
+</pre>
+
+<div class="mt-6 space-y-4 text-slate-300">
+
+<p>
+<strong>show ip route</strong>
+→ ดู Routing Table
+</p>
+
+<p>
+<strong>show ip ospf neighbor</strong>
+→ ดู OSPF Neighbor
+</p>
+
+<p>
+<strong>show ip bgp summary</strong>
+→ ดู BGP Peer
+</p>
+
+<p>
+<strong>show arp</strong>
+→ ดู ARP Table
+</p>
+
+<p class="text-cyan-300">
+ใช้กับ: Router / L3 Switch
+</p>
+
+</div>
+
+</div>
+
+</body>
+</html>
