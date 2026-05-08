@@ -15,6 +15,7 @@ body{
   color:white;
   font-family:Arial,sans-serif;
   padding:40px;
+  margin:0;
 }
 
 .card{
@@ -22,14 +23,17 @@ body{
   border:1px solid #1e293b;
   border-radius:24px;
   padding:24px;
+  max-width:1200px;
+  margin:auto;
 }
 
 pre{
-  background:black;
+  background:#000;
   color:#4ade80;
   padding:20px;
   border-radius:18px;
   overflow:auto;
+  white-space:pre-wrap;
 }
 
 .btn{
@@ -39,6 +43,12 @@ pre{
   border-radius:12px;
   font-weight:bold;
   text-decoration:none;
+  display:inline-block;
+  margin-bottom:20px;
+}
+
+.btn:hover{
+  background:#67e8f9;
 }
 
 </style>
@@ -46,54 +56,74 @@ pre{
 
 <body>
 
+<div class="max-w-7xl mx-auto">
+
 <a href="index.html" class="btn">
 ← Back Dashboard
 </a>
 
-<div class="card mt-8">
+<div class="card">
 
 <h1 class="text-5xl font-bold text-red-400 mb-6">
 MAC Drop Commands
 </h1>
 
+<p class="text-slate-400 text-lg mb-8">
+Port Security / MAC Violation / Errdisable / MAC Learning
+</p>
+
 <pre>
 show port-security
 show port-security interface fa0/1
 show mac address-table
-show errdisable recovery
+show mac address-table interface fa0/1
 show interfaces status err-disabled
+show errdisable recovery
+show logging
 </pre>
 
 <div class="mt-6 space-y-4 text-slate-300">
 
 <p>
 <strong>show port-security</strong>
-→ ดูสถานะ Port Security ทั้งหมด
+→ ดู Port Security ทั้งหมดใน Switch
 </p>
 
 <p>
 <strong>show port-security interface fa0/1</strong>
-→ ดู MAC ที่ถูก Block บน Port
+→ ดู MAC Violation ของ Port
 </p>
 
 <p>
 <strong>show mac address-table</strong>
-→ ดู MAC Learning
+→ ดู MAC Address ที่เรียนรู้
 </p>
 
 <p>
-<strong>show errdisable recovery</strong>
-→ ดูการ Recover Port ที่โดน Disable
+<strong>show mac address-table interface fa0/1</strong>
+→ ดู MAC บน Port ที่ต้องการ
 </p>
 
 <p>
 <strong>show interfaces status err-disabled</strong>
-→ ดู Port ที่โดน Shutdown จาก Security
+→ ดู Port ที่ถูก Disable
+</p>
+
+<p>
+<strong>show errdisable recovery</strong>
+→ ดูระบบ Auto Recovery ของ Port
+</p>
+
+<p>
+<strong>show logging</strong>
+→ ดู Log Security / Violation
 </p>
 
 <p class="text-cyan-300">
 ใช้กับ: Cisco Switch
 </p>
+
+</div>
 
 </div>
 
