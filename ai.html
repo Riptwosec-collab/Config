@@ -1,4 +1,152 @@
-<!-- เพิ่มแทน function analyzeNetwork() เดิม -->
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>AI Network Assistant</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+
+body{
+  background:#020617;
+  color:white;
+  font-family:Arial,sans-serif;
+}
+
+.card{
+  background:#0f172a;
+  border:1px solid #1e293b;
+  border-radius:24px;
+  padding:28px;
+}
+
+.btn{
+  background:#22d3ee;
+  color:black;
+  padding:12px 20px;
+  border-radius:12px;
+  font-weight:bold;
+  transition:.2s;
+}
+
+.btn:hover{
+  background:#67e8f9;
+}
+
+textarea{
+  resize:none;
+}
+
+.result-box{
+  background:black;
+  border:1px solid #1e293b;
+  border-radius:18px;
+  padding:20px;
+  min-height:300px;
+  color:#4ade80;
+  white-space:pre-wrap;
+  overflow:auto;
+  font-family:Consolas;
+}
+
+.badge{
+  background:#111827;
+  border:1px solid #334155;
+  padding:6px 12px;
+  border-radius:999px;
+  font-size:13px;
+  color:#cbd5e1;
+}
+
+</style>
+</head>
+
+<body class="p-8">
+
+<div class="max-w-7xl mx-auto">
+
+<a href="./index.html" class="btn inline-block mb-6">
+← Back Dashboard
+</a>
+
+<div class="card">
+
+<div class="flex flex-col lg:flex-row lg:justify-between gap-4 mb-8">
+
+<div>
+<h1 class="text-5xl font-black text-cyan-400 mb-2">
+AI Network Assistant
+</h1>
+
+<p class="text-slate-400">
+Cisco Smart Troubleshooting / Incident Analyzer
+</p>
+</div>
+
+<div class="flex flex-wrap gap-3">
+<div class="badge">ACL Detect</div>
+<div class="badge">MAC Drop</div>
+<div class="badge">Routing</div>
+<div class="badge">SD-WAN</div>
+<div class="badge">Interface Error</div>
+</div>
+
+</div>
+
+<div class="grid lg:grid-cols-2 gap-8">
+
+<!-- INPUT -->
+<div>
+
+<h2 class="text-2xl font-bold mb-4 text-cyan-300">
+Paste Command Output
+</h2>
+
+<textarea
+id="commandInput"
+class="w-full h-[420px] bg-black border border-slate-700 rounded-2xl p-5 text-green-400"
+placeholder="Paste Cisco command output here..."
+></textarea>
+
+<div class="flex gap-4 mt-5 flex-wrap">
+
+<button onclick="analyzeNetwork()" class="btn">
+Analyze
+</button>
+
+<button onclick="clearAll()" class="btn">
+Clear
+</button>
+
+<button onclick="loadExample()" class="btn">
+Example
+</button>
+
+</div>
+
+</div>
+
+<!-- RESULT -->
+<div>
+
+<h2 class="text-2xl font-bold mb-4 text-cyan-300">
+AI Result
+</h2>
+
+<div id="result" class="result-box">
+Waiting for analysis...
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
 
 <script>
 
@@ -10,24 +158,22 @@ const result = document.getElementById("result");
 let analysis = `
 ==============================
 🤖 AI NETWORK ANALYSIS
-ระบบวิเคราะห์ปัญหา Network อัตโนมัติ
 ==============================
 
 `;
 
 if(input.trim() === ""){
+
 analysis += `
-❌ ไม่พบข้อมูล Command Output
+❌ ไม่พบข้อมูล Command
 
 กรุณาวาง:
 - show interfaces
 - show logging
 - show access-lists
 - show ip route
-- show port-security
-
-แล้วกด Analyze
 `;
+
 result.innerText = analysis;
 return;
 }
@@ -45,31 +191,24 @@ input.includes("security violation")
 analysis += `
 
 ━━━━━━━━━━━━━━━━━━━━━━
-🚨 พบปัญหา: MAC ADDRESS DROP
+🚨 MAC ADDRESS DROP
 ━━━━━━━━━━━━━━━━━━━━━━
 
-📌 สาเหตุที่เป็นไปได้
+📌 สาเหตุ
 • Port Security ทำงาน
-• MAC Address เกิน Limit
-• มีการเสียบอุปกรณ์ใหม่
-• Interface ถูก Err-disable
+• MAC เกิน Limit
+• Interface Err-disable
 
 📌 คำสั่งตรวจสอบ
 show port-security
-show port-security interface gi1/0/1
 show interfaces status err-disabled
 show mac address-table
-show errdisable recovery
 
-📌 วิธีแก้ไข
-interface gi1/0/1
+📌 วิธีแก้
 shutdown
 no shutdown
 
-หรือเปิด Recovery อัตโนมัติ
-errdisable recovery cause psecure-violation
-
-📌 อุปกรณ์ที่ใช้
+📌 อุปกรณ์
 Cisco Switch
 
 `;
@@ -88,29 +227,24 @@ input.includes("acl")
 analysis += `
 
 ━━━━━━━━━━━━━━━━━━━━━━
-🚨 พบปัญหา: IP ถูก Block
+🚨 IP BLOCK / ACL
 ━━━━━━━━━━━━━━━━━━━━━━
 
-📌 สาเหตุที่เป็นไปได้
-• ACL Block IP
+📌 สาเหตุ
+• ACL Block
 • Firewall Policy Block
-• มี deny rule
-• NAT ไม่ถูกต้อง
 
 📌 คำสั่งตรวจสอบ
 show access-lists
 show run | sec access-list
 show conn
-show logging
-show ip nat translations
 
-📌 วิธีตรวจสอบเพิ่มเติม
+📌 วิธีตรวจสอบ
 • ตรวจ deny any any
-• เช็คลำดับ ACL
-• ตรวจสอบ NAT
-• ตรวจสอบ Security Policy
+• ตรวจ NAT
+• ตรวจ ACL Order
 
-📌 อุปกรณ์ที่ใช้
+📌 อุปกรณ์
 Router / Firewall
 
 `;
@@ -129,34 +263,25 @@ input.includes("duplex")
 analysis += `
 
 ━━━━━━━━━━━━━━━━━━━━━━
-🚨 พบปัญหา: Interface Error
+🚨 INTERFACE ERROR
 ━━━━━━━━━━━━━━━━━━━━━━
 
-📌 อาการที่พบ
-• CRC Error
-• Input Error
-• Duplex Mismatch
-• Packet Drop
-
-📌 สาเหตุที่เป็นไปได้
+📌 สาเหตุ
+• Duplex mismatch
 • สาย LAN เสีย
-• SFP มีปัญหา
-• Speed/Duplex ไม่ตรงกัน
-• Interface ใช้งานหนัก
+• CRC สูง
 
 📌 คำสั่งตรวจสอบ
 show interfaces
 show interfaces counters errors
-show controllers ethernet-controller
 
-📌 วิธีแก้ไข
-• เปลี่ยนสาย LAN
-• ตรวจ Speed/Duplex
-• เปลี่ยน SFP
-• เช็ค Utilization
+📌 วิธีแก้
+• เปลี่ยนสาย
+• ตรวจ speed/duplex
+• ตรวจ SFP
 
-📌 อุปกรณ์ที่ใช้
-Router / Switch
+📌 อุปกรณ์
+Switch / Router
 
 `;
 }
@@ -168,78 +293,38 @@ SDWAN
 if(
 input.includes("bfd") ||
 input.includes("omp") ||
-input.includes("control connections")
+input.includes("control")
 ){
 
 analysis += `
 
 ━━━━━━━━━━━━━━━━━━━━━━
-🚨 พบปัญหา: SD-WAN DOWN
+🚨 SD-WAN ISSUE
 ━━━━━━━━━━━━━━━━━━━━━━
 
-📌 สาเหตุที่เป็นไปได้
+📌 สาเหตุ
+• OMP Down
 • BFD Down
-• OMP Peer หลุด
-• Control Connection Down
-• ISP มีปัญหา
+• WAN ISP Problem
 
 📌 คำสั่งตรวจสอบ
 show sdwan bfd sessions
 show sdwan omp peers
 show sdwan control connections
 
-📌 วิธีตรวจสอบเพิ่มเติม
-• Ping WAN Gateway
-• ตรวจ Certificate
-• ตรวจ vSmart Reachable
-• ตรวจ Internet ISP
+📌 วิธีตรวจสอบ
+• Ping WAN
+• ตรวจ ISP
+• ตรวจ vSmart
 
-📌 อุปกรณ์ที่ใช้
-Cisco SD-WAN Edge
-
-`;
-}
-
-/* =========================
-INTERFACE DOWN
-========================= */
-
-if(
-input.includes("administratively down") ||
-input.includes("line protocol down")
-){
-
-analysis += `
-
-━━━━━━━━━━━━━━━━━━━━━━
-🚨 พบปัญหา: Interface Down
-━━━━━━━━━━━━━━━━━━━━━━
-
-📌 สาเหตุที่เป็นไปได้
-• Port Shutdown
-• สาย LAN หลุด
-• SFP ไม่ทำงาน
-• VLAN ผิด
-
-📌 คำสั่งตรวจสอบ
-show ip interface brief
-show interfaces status
-show logging
-
-📌 วิธีแก้ไข
-interface gi1/0/1
-no shutdown
-
-📌 ตรวจสอบเพิ่มเติม
-• เช็คสาย
-• เช็ค VLAN
-• เช็ค Switch Port
+📌 อุปกรณ์
+Cisco SD-WAN
 
 `;
 }
 
 /* =========================
-PING FAIL
+INTERNET ISSUE
 ========================= */
 
 if(
@@ -250,66 +335,28 @@ input.includes("destination host unreachable")
 analysis += `
 
 ━━━━━━━━━━━━━━━━━━━━━━
-🚨 พบปัญหา: ใช้งาน Internet ไม่ได้
+🚨 INTERNET ISSUE
 ━━━━━━━━━━━━━━━━━━━━━━
 
-📌 สาเหตุที่เป็นไปได้
+📌 สาเหตุ
 • Gateway Down
-• VLAN ผิด
-• ACL Block
 • Routing ผิด
+• ACL Block
 • ISP Down
 
 📌 คำสั่งตรวจสอบ
 ping 8.8.8.8
 traceroute 8.8.8.8
-show arp
 show ip route
 show access-lists
 
 📌 วิธีตรวจสอบ
 • Ping Gateway
-• ตรวจ DHCP
 • ตรวจ DNS
-• ตรวจ Firewall
+• ตรวจ DHCP
 
-📌 อุปกรณ์ที่ใช้
-Router / Firewall / Switch
-
-`;
-}
-
-/* =========================
-CPU HIGH
-========================= */
-
-if(
-input.includes("cpu") ||
-input.includes("high cpu")
-){
-
-analysis += `
-
-━━━━━━━━━━━━━━━━━━━━━━
-🚨 พบปัญหา: CPU สูง
-━━━━━━━━━━━━━━━━━━━━━━
-
-📌 คำสั่งตรวจสอบ
-show processes cpu
-show processes cpu history
-show memory statistics
-
-📌 สาเหตุที่เป็นไปได้
-• Broadcast Storm
-• Loop Network
-• Traffic สูง
-• Process ค้าง
-
-📌 วิธีแก้
-• ตรวจ STP
-• ตรวจ Loop
-• Restart Process
-• ตรวจ Traffic
+📌 อุปกรณ์
+Router / Firewall
 
 `;
 }
@@ -318,20 +365,11 @@ show memory statistics
 NO MATCH
 ========================= */
 
-if(analysis.includes("ระบบวิเคราะห์ปัญหา") && analysis.length < 200){
+if(analysis.length < 100){
 
 analysis += `
-
 ✅ ไม่พบปัญหาที่ระบบรู้จัก
-
-ลองเพิ่ม Command:
-• show interfaces
-• show logging
-• show access-lists
-• show ip route
-• show port-security
-
-เพื่อให้ AI วิเคราะห์ได้ละเอียดขึ้น
+ลองเพิ่ม command เพิ่มเติม
 `;
 }
 
@@ -339,4 +377,29 @@ result.innerText = analysis;
 
 }
 
+/* CLEAR */
+
+function clearAll(){
+
+document.getElementById("commandInput").value = "";
+
+document.getElementById("result").innerText =
+"Waiting for analysis...";
+
+}
+
+/* EXAMPLE */
+
+function loadExample(){
+
+document.getElementById("commandInput").value = `
+%PORT_SECURITY-2-PSECURE_VIOLATION
+Interface Gi1/0/5 err-disabled
+`;
+
+}
+
 </script>
+
+</body>
+</html>
