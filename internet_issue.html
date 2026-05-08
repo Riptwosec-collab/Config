@@ -10,10 +10,17 @@
 
 <style>
 
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
 body{
   background:#020617;
   color:white;
   font-family:Arial,sans-serif;
+  min-height:100vh;
   padding:40px;
 }
 
@@ -21,23 +28,65 @@ body{
   background:#0f172a;
   border:1px solid #1e293b;
   border-radius:24px;
-  padding:24px;
+  padding:32px;
+  max-width:1100px;
+  margin:auto;
+  box-shadow:0 0 25px rgba(0,0,0,.35);
 }
 
 pre{
-  background:black;
+  background:#000;
   color:#4ade80;
   padding:20px;
   border-radius:18px;
+  overflow-x:auto;
+  white-space:pre-wrap;
+  line-height:1.8;
+  margin-top:20px;
 }
 
 .btn{
+  display:inline-block;
   background:#22d3ee;
   color:black;
   padding:12px 18px;
   border-radius:12px;
   font-weight:bold;
   text-decoration:none;
+  transition:.25s;
+}
+
+.btn:hover{
+  background:#67e8f9;
+  transform:translateY(-2px);
+}
+
+.desc{
+  margin-top:28px;
+}
+
+.desc p{
+  margin-bottom:18px;
+  color:#cbd5e1;
+  line-height:1.7;
+}
+
+.title{
+  font-size:48px;
+  font-weight:900;
+  color:#22d3ee;
+  margin-bottom:10px;
+}
+
+.subtitle{
+  color:#94a3b8;
+  margin-bottom:20px;
+}
+
+.footer{
+  color:#22d3ee;
+  margin-top:24px;
+  font-weight:bold;
 }
 
 </style>
@@ -45,53 +94,123 @@ pre{
 
 <body>
 
-<a href="index.html" class="btn">
+<a href="./index.html" class="btn">
 ← Back Dashboard
 </a>
 
 <div class="card mt-8">
 
-<h1 class="text-5xl font-bold text-cyan-400 mb-6">
+<h1 class="title">
 PC Internet Issue
 </h1>
 
+<p class="subtitle">
+Troubleshooting PC ใช้งาน Internet ไม่ได้
+</p>
+
 <pre>
 ping 8.8.8.8
+ping gateway-ip
 traceroute 8.8.8.8
 show ip interface brief
 show access-lists
 show mac address-table
+show arp
+show interfaces status
+show interfaces counters errors
+show port-security
+show logging
+show spanning-tree
+show vlan brief
+show ip route
+show ip dhcp binding
+show ip dhcp conflict
 </pre>
 
-<div class="mt-6 space-y-4 text-slate-300">
+<div class="desc">
 
 <p>
-<strong>ping</strong>
-→ ทดสอบ Internet
+<strong>ping 8.8.8.8</strong><br>
+→ ทดสอบว่าออก Internet ได้หรือไม่
 </p>
 
 <p>
-<strong>traceroute</strong>
-→ ดูเส้นทาง Network
+<strong>ping gateway-ip</strong><br>
+→ ทดสอบ Gateway ว่ายังติดต่อได้
 </p>
 
 <p>
-<strong>show ip interface brief</strong>
+<strong>traceroute 8.8.8.8</strong><br>
+→ ตรวจสอบเส้นทาง Network
+</p>
+
+<p>
+<strong>show ip interface brief</strong><br>
 → ดู Interface Up/Down
 </p>
 
 <p>
-<strong>show access-lists</strong>
-→ ตรวจสอบ ACL Block
+<strong>show access-lists</strong><br>
+→ ตรวจสอบ ACL ว่ามีการ Block IP หรือไม่
 </p>
 
 <p>
-<strong>show mac address-table</strong>
-→ ตรวจสอบ MAC Learning
+<strong>show mac address-table</strong><br>
+→ ตรวจสอบว่า MAC ของเครื่องเรียนรู้บน Switch หรือไม่
 </p>
 
-<p class="text-cyan-300">
-ใช้กับ: Router / Switch / Firewall
+<p>
+<strong>show arp</strong><br>
+→ ตรวจสอบ ARP Table
+</p>
+
+<p>
+<strong>show interfaces status</strong><br>
+→ ดูสถานะ Port
+</p>
+
+<p>
+<strong>show interfaces counters errors</strong><br>
+→ ตรวจสอบ CRC / Error / Drops
+</p>
+
+<p>
+<strong>show port-security</strong><br>
+→ ตรวจสอบว่า MAC ถูก Security Block หรือไม่
+</p>
+
+<p>
+<strong>show logging</strong><br>
+→ ดู Logs Error ล่าสุด
+</p>
+
+<p>
+<strong>show spanning-tree</strong><br>
+→ ตรวจสอบว่า Port ถูก STP Block หรือไม่
+</p>
+
+<p>
+<strong>show vlan brief</strong><br>
+→ ตรวจสอบ VLAN ของ Port
+</p>
+
+<p>
+<strong>show ip route</strong><br>
+→ ตรวจสอบ Default Route
+</p>
+
+<p>
+<strong>show ip dhcp binding</strong><br>
+→ ตรวจสอบ DHCP Lease
+</p>
+
+<p>
+<strong>show ip dhcp conflict</strong><br>
+→ ตรวจสอบ IP Conflict
+</p>
+
+<p class="footer">
+ใช้งานกับ: Cisco Router / Switch / Firewall
 </p>
 
 </div>
