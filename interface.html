@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interface Status</title>
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+body{
+background:#020617;
+color:white;
+font-family:Arial;
+}
+.card{
+background:#0f172a;
+border:1px solid #1e293b;
+border-radius:24px;
+padding:28px;
+}
+pre{
+background:black;
+color:#4ade80;
+padding:20px;
+border-radius:16px;
+overflow:auto;
+}
+.btn{
+background:#22d3ee;
+color:black;
+padding:12px 18px;
+border-radius:12px;
+font-weight:bold;
+}
+</style>
+</head>
+
+<body class="p-8">
+
+<a href="./index.html" class="btn inline-block mb-6">
+← Back Dashboard
+</a>
+
+<div class="card max-w-5xl mx-auto">
+
+<h1 class="text-4xl font-black text-pink-400 mb-6">
+Interface Status
+</h1>
+
+<pre>
+show interfaces
+show interfaces status
+show interfaces counters errors
+show interfaces description
+show controllers ethernet-controller
+show interface duplex
+show interface speed
+</pre>
+
+<div class="space-y-4 mt-6 text-slate-300">
+
+<p><b>show interfaces</b><br>
+ดู CRC / Errors / Utilization</p>
+
+<p><b>show interfaces status</b><br>
+ดู Port Up/Down</p>
+
+<p><b>show interfaces counters errors</b><br>
+ดู Error Counter</p>
+
+<p><b>show interfaces description</b><br>
+ดู Description Port</p>
+
+<p><b>show controllers ethernet-controller</b><br>
+ดู Physical Errors</p>
+
+<p><b>show interface duplex</b><br>
+ดู Duplex</p>
+
+<p><b>show interface speed</b><br>
+ดู Speed Interface</p>
+
+<p class="text-cyan-400">
+ใช้งานกับ: Cisco Switch / Router
+</p>
+
+</div>
+
+</div>
+</body>
+</html>
