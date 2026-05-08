@@ -3,57 +3,213 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>AI Assistant</title>
+
 <script src="https://cdn.tailwindcss.com"></script>
 
 <style>
+
 body{
-background:#020617;
-color:white;
-font-family:Arial;
+  background:#020617;
+  color:white;
+  font-family:Arial,sans-serif;
 }
+
 .card{
-background:#0f172a;
-border:1px solid #1e293b;
-border-radius:24px;
-padding:28px;
+  background:#0f172a;
+  border:1px solid #1e293b;
+  border-radius:24px;
+  padding:28px;
+  box-shadow:0 0 30px rgba(0,0,0,.35);
 }
+
 .btn{
-background:#22d3ee;
-color:black;
-padding:12px 18px;
-border-radius:12px;
-font-weight:bold;
+  background:#22d3ee;
+  color:black;
+  padding:12px 18px;
+  border-radius:12px;
+  font-weight:bold;
+  transition:.2s;
 }
+
+.btn:hover{
+  background:#67e8f9;
+  transform:translateY(-2px);
+}
+
+.input{
+  width:100%;
+  background:black;
+  border:1px solid #334155;
+  border-radius:16px;
+  padding:16px;
+  color:white;
+  outline:none;
+}
+
+.input:focus{
+  border-color:#22d3ee;
+}
+
+.result{
+  background:#000;
+  border:1px solid #1e293b;
+  border-radius:18px;
+  padding:20px;
+  margin-top:24px;
+  color:#4ade80;
+  white-space:pre-wrap;
+  line-height:1.7;
+}
+
 </style>
 </head>
 
 <body class="p-8">
 
-<a href="./index.html" class="btn inline-block mb-6">
+<!-- BACK -->
+<a href="index.html" class="btn inline-block mb-6">
 ← Back Dashboard
 </a>
 
+<!-- CARD -->
 <div class="card max-w-5xl mx-auto">
 
-<h1 class="text-4xl font-black text-cyan-400 mb-6">
+<h1 class="text-5xl font-black text-cyan-400 mb-3">
 AI Assistant
 </h1>
 
+<p class="text-slate-400 mb-8">
+AI Troubleshooting Assistant สำหรับวิเคราะห์ Command และ Incident Network
+</p>
+
+<!-- INPUT -->
 <input
+id="question"
 type="text"
-placeholder="Ask network command..."
-class="w-full bg-black border border-slate-700 rounded-xl p-4 text-white mb-5"
+placeholder="เช่น: internet ใช้งานไม่ได้ / mac drop / ospf down"
+class="input mb-5"
 />
 
-<button class="btn">
+<!-- BUTTON -->
+<button onclick="analyzeIssue()" class="btn">
 Analyze
 </button>
 
-<div class="mt-8 text-slate-300">
-AI Troubleshooting Assistant สำหรับวิเคราะห์ Command และ Incident Network
+<!-- RESULT -->
+<div id="result" class="result mt-8">
+
+ระบบพร้อมวิเคราะห์ปัญหา Network...
+
 </div>
 
 </div>
+
+<script>
+
+function analyzeIssue(){
+
+  const q = document.getElementById("question").value.toLowerCase();
+
+  const result = document.getElementById("result");
+
+  if(q.includes("internet")){
+
+    result.innerHTML = `
+[ PC INTERNET ISSUE ]
+
+Commands:
+- ping 8.8.8.8
+- traceroute 8.8.8.8
+- show ip interface brief
+- show access-lists
+- show mac address-table
+- show arp
+
+Possible Cause:
+- Gateway Down
+- ACL Block
+- DHCP Issue
+- Interface Down
+`;
+
+  }
+
+  else if(q.includes("mac")){
+
+    result.innerHTML = `
+[ MAC DROP ISSUE ]
+
+Commands:
+- show port-security
+- show mac address-table
+- show interfaces status
+- show errdisable recovery
+- show logging
+
+Possible Cause:
+- Port Security Violation
+- MAC Limit Exceeded
+- Interface Errdisable
+`;
+
+  }
+
+  else if(q.includes("ospf")){
+
+    result.innerHTML = `
+[ OSPF ISSUE ]
+
+Commands:
+- show ip ospf neighbor
+- show ip route
+- show ip protocols
+- debug ip ospf adj
+
+Possible Cause:
+- Neighbor Down
+- Area Mismatch
+- MTU Mismatch
+`;
+
+  }
+
+  else if(q.includes("bgp")){
+
+    result.innerHTML = `
+[ BGP ISSUE ]
+
+Commands:
+- show ip bgp summary
+- show ip route bgp
+- show tcp brief
+
+Possible Cause:
+- Peer Down
+- ASN Mismatch
+- Firewall Block
+`;
+
+  }
+
+  else{
+
+    result.innerHTML = `
+ไม่พบคำที่วิเคราะห์ได้
+
+ลอง:
+- internet
+- mac drop
+- ospf
+- bgp
+`;
+
+  }
+
+}
+
+</script>
+
 </body>
 </html>
