@@ -19,18 +19,18 @@ body{
 .card{
   background:#0f172a;
   border:1px solid #1e293b;
-  border-radius:24px;
-  padding:28px;
-  box-shadow:0 0 30px rgba(0,0,0,.35);
+  border-radius:28px;
+  padding:30px;
+  box-shadow:0 0 35px rgba(0,0,0,.4);
 }
 
 .btn{
   background:#22d3ee;
   color:black;
-  padding:12px 18px;
-  border-radius:12px;
+  padding:14px 22px;
+  border-radius:14px;
   font-weight:bold;
-  transition:.2s;
+  transition:.25s;
 }
 
 .btn:hover{
@@ -42,7 +42,7 @@ body{
   width:100%;
   background:black;
   border:1px solid #334155;
-  border-radius:16px;
+  border-radius:18px;
   padding:16px;
   color:white;
   outline:none;
@@ -55,12 +55,35 @@ body{
 .result{
   background:#000;
   border:1px solid #1e293b;
-  border-radius:18px;
-  padding:20px;
-  margin-top:24px;
+  border-radius:20px;
+  padding:24px;
+  margin-top:25px;
   color:#4ade80;
   white-space:pre-wrap;
-  line-height:1.7;
+  line-height:1.8;
+}
+
+.badge{
+  display:inline-block;
+  padding:6px 12px;
+  border-radius:999px;
+  font-size:13px;
+  font-weight:bold;
+}
+
+.critical{
+  background:#7f1d1d;
+  color:#fecaca;
+}
+
+.warning{
+  background:#78350f;
+  color:#fde68a;
+}
+
+.normal{
+  background:#064e3b;
+  color:#a7f3d0;
 }
 
 </style>
@@ -74,33 +97,33 @@ body{
 </a>
 
 <!-- CARD -->
-<div class="card max-w-5xl mx-auto">
+<div class="card max-w-6xl mx-auto">
 
 <h1 class="text-5xl font-black text-cyan-400 mb-3">
-AI Assistant
+AI Network Assistant
 </h1>
 
 <p class="text-slate-400 mb-8">
-AI Troubleshooting Assistant สำหรับวิเคราะห์ Command และ Incident Network
+Smart Troubleshooting • Network Incident Analysis • Cisco Command Assistant
 </p>
 
 <!-- INPUT -->
 <input
 id="question"
 type="text"
-placeholder="เช่น: internet ใช้งานไม่ได้ / mac drop / ospf down"
+placeholder="เช่น internet ใช้งานไม่ได้ / ospf down / mac drop / high cpu"
 class="input mb-5"
 />
 
 <!-- BUTTON -->
 <button onclick="analyzeIssue()" class="btn">
-Analyze
+Analyze Problem
 </button>
 
 <!-- RESULT -->
-<div id="result" class="result mt-8">
+<div id="result" class="result">
 
-ระบบพร้อมวิเคราะห์ปัญหา Network...
+พร้อมวิเคราะห์ปัญหา Network...
 
 </div>
 
@@ -111,84 +134,255 @@ Analyze
 function analyzeIssue(){
 
   const q = document.getElementById("question").value.toLowerCase();
-
   const result = document.getElementById("result");
 
+  // INTERNET
   if(q.includes("internet")){
 
     result.innerHTML = `
-[ PC INTERNET ISSUE ]
+<span class="badge critical">CRITICAL</span>
 
-Commands:
-- ping 8.8.8.8
-- traceroute 8.8.8.8
-- show ip interface brief
-- show access-lists
-- show mac address-table
-- show arp
+[ INTERNET ISSUE ]
 
 Possible Cause:
-- Gateway Down
-- ACL Block
-- DHCP Issue
-- Interface Down
+• Gateway Down
+• ACL Block
+• DHCP Problem
+• DNS Failure
+• Interface Down
+
+Recommended Commands:
+
+show ip interface brief
+show access-lists
+show arp
+show mac address-table
+show ip route
+show logging
+
+Troubleshooting:
+1. ตรวจสอบ Interface
+2. ตรวจสอบ Gateway
+3. ตรวจสอบ ACL
+4. ตรวจสอบ DNS
+5. ตรวจสอบ DHCP
 `;
 
   }
 
+  // MAC DROP
   else if(q.includes("mac")){
 
     result.innerHTML = `
-[ MAC DROP ISSUE ]
+<span class="badge warning">WARNING</span>
 
-Commands:
-- show port-security
-- show mac address-table
-- show interfaces status
-- show errdisable recovery
-- show logging
+[ MAC DROP DETECTED ]
 
 Possible Cause:
-- Port Security Violation
-- MAC Limit Exceeded
-- Interface Errdisable
+• Port Security Violation
+• MAC Flooding
+• Errdisable
+• Sticky MAC Conflict
+
+Commands:
+
+show port-security
+show mac address-table
+show interfaces status
+show errdisable recovery
+show logging
+
+Fix:
+• clear port-security sticky
+• shutdown / no shutdown
+• increase maximum MAC
 `;
 
   }
 
+  // IP BLOCK
+  else if(q.includes("ip")){
+
+    result.innerHTML = `
+<span class="badge critical">CRITICAL</span>
+
+[ IP BLOCK ISSUE ]
+
+Possible Cause:
+• ACL Deny
+• Firewall Rule
+• Dynamic Block
+• Security Policy
+
+Commands:
+
+show access-lists
+show run | include access-group
+show conn
+show logging
+
+Fix:
+• ตรวจสอบ ACL
+• Allow Source IP
+• ตรวจสอบ Firewall Policy
+`;
+
+  }
+
+  // OSPF
   else if(q.includes("ospf")){
 
     result.innerHTML = `
-[ OSPF ISSUE ]
+<span class="badge warning">WARNING</span>
+
+[ OSPF NEIGHBOR DOWN ]
 
 Commands:
-- show ip ospf neighbor
-- show ip route
-- show ip protocols
-- debug ip ospf adj
+
+show ip ospf neighbor
+show ip route
+show ip protocols
+debug ip ospf adj
 
 Possible Cause:
-- Neighbor Down
-- Area Mismatch
-- MTU Mismatch
+• Area Mismatch
+• MTU Mismatch
+• Authentication Fail
+• Interface Down
 `;
 
   }
 
+  // BGP
   else if(q.includes("bgp")){
 
     result.innerHTML = `
-[ BGP ISSUE ]
+<span class="badge warning">WARNING</span>
+
+[ BGP PEER DOWN ]
 
 Commands:
-- show ip bgp summary
-- show ip route bgp
-- show tcp brief
+
+show ip bgp summary
+show ip route bgp
+show tcp brief
 
 Possible Cause:
-- Peer Down
-- ASN Mismatch
-- Firewall Block
+• ASN Mismatch
+• Firewall Block
+• Neighbor Unreachable
+`;
+
+  }
+
+  // CPU
+  else if(q.includes("cpu")){
+
+    result.innerHTML = `
+<span class="badge critical">CRITICAL</span>
+
+[ HIGH CPU USAGE ]
+
+Commands:
+
+show processes cpu sorted
+show cpu history
+show memory statistics
+
+Possible Cause:
+• Broadcast Storm
+• Loop
+• DDoS
+• Routing Flap
+`;
+
+  }
+
+  // DHCP
+  else if(q.includes("dhcp")){
+
+    result.innerHTML = `
+<span class="badge warning">WARNING</span>
+
+[ DHCP ISSUE ]
+
+Commands:
+
+show ip dhcp binding
+show ip dhcp pool
+show logging
+
+Possible Cause:
+• Pool Full
+• DHCP Server Down
+• VLAN Problem
+`;
+
+  }
+
+  // DNS
+  else if(q.includes("dns")){
+
+    result.innerHTML = `
+<span class="badge warning">WARNING</span>
+
+[ DNS ISSUE ]
+
+Commands:
+
+nslookup google.com
+ping 8.8.8.8
+show hosts
+
+Possible Cause:
+• DNS Server Down
+• Internet Fail
+• ACL Block
+`;
+
+  }
+
+  // SDWAN
+  else if(q.includes("sdwan")){
+
+    result.innerHTML = `
+<span class="badge critical">CRITICAL</span>
+
+[ SD-WAN TUNNEL DOWN ]
+
+Commands:
+
+show sdwan bfd sessions
+show sdwan omp peers
+show sdwan control connections
+
+Possible Cause:
+• Tunnel Loss
+• WAN Failure
+• Control Connection Down
+`;
+
+  }
+
+  // INTERFACE
+  else if(q.includes("interface")){
+
+    result.innerHTML = `
+<span class="badge warning">WARNING</span>
+
+[ INTERFACE ISSUE ]
+
+Commands:
+
+show interfaces
+show interfaces status
+show interface counters errors
+
+Possible Cause:
+• CRC Error
+• Duplex Mismatch
+• Cable Problem
+• Interface Down
 `;
 
   }
@@ -196,13 +390,21 @@ Possible Cause:
   else{
 
     result.innerHTML = `
+<span class="badge normal">READY</span>
+
 ไม่พบคำที่วิเคราะห์ได้
 
-ลอง:
-- internet
-- mac drop
-- ospf
-- bgp
+ลองใช้:
+• internet
+• mac drop
+• ip block
+• ospf
+• bgp
+• cpu
+• dhcp
+• dns
+• sdwan
+• interface
 `;
 
   }
