@@ -15,6 +15,7 @@ body{
   color:white;
   font-family:Arial,sans-serif;
   padding:40px;
+  margin:0;
 }
 
 .card{
@@ -22,14 +23,17 @@ body{
   border:1px solid #1e293b;
   border-radius:24px;
   padding:24px;
+  max-width:1200px;
+  margin:auto;
 }
 
 pre{
-  background:black;
+  background:#000;
   color:#4ade80;
   padding:20px;
   border-radius:18px;
   overflow:auto;
+  white-space:pre-wrap;
 }
 
 .btn{
@@ -39,6 +43,12 @@ pre{
   border-radius:12px;
   font-weight:bold;
   text-decoration:none;
+  display:inline-block;
+  margin-bottom:20px;
+}
+
+.btn:hover{
+  background:#67e8f9;
 }
 
 </style>
@@ -46,39 +56,53 @@ pre{
 
 <body>
 
+<div class="max-w-7xl mx-auto">
+
 <a href="index.html" class="btn">
 ← Back Dashboard
 </a>
 
-<div class="card mt-8">
+<div class="card">
 
 <h1 class="text-5xl font-bold text-yellow-400 mb-6">
 IP Block Commands
 </h1>
 
+<p class="text-slate-400 text-lg mb-8">
+ACL / Firewall / NAT / IP Restriction
+</p>
+
 <pre>
 show access-lists
 show ip access-lists
 show run | include access-group
+show run | section access-list
 show ip nat translations
+show ip nat statistics
 show conn
+show logging
 </pre>
 
 <div class="mt-6 space-y-4 text-slate-300">
 
 <p>
 <strong>show access-lists</strong>
-→ ดู ACL ที่ Block IP
+→ ดู ACL ที่ใช้ Block / Allow IP
 </p>
 
 <p>
 <strong>show ip access-lists</strong>
-→ ดูรายละเอียด ACL
+→ ดู ACL แบบละเอียด
 </p>
 
 <p>
 <strong>show run | include access-group</strong>
-→ ดู Interface ที่ Apply ACL
+→ ดูว่า ACL Apply ที่ Interface ไหน
+</p>
+
+<p>
+<strong>show run | section access-list</strong>
+→ ดู Config ACL เต็ม
 </p>
 
 <p>
@@ -87,13 +111,25 @@ show conn
 </p>
 
 <p>
+<strong>show ip nat statistics</strong>
+→ ดู NAT Statistics
+</p>
+
+<p>
 <strong>show conn</strong>
-→ ดู Firewall Connections
+→ ดู Firewall Connection
+</p>
+
+<p>
+<strong>show logging</strong>
+→ ดู Log การ Block IP
 </p>
 
 <p class="text-cyan-300">
-ใช้กับ: Router / Firewall
+ใช้กับ: Router / Firewall / L3 Switch
 </p>
+
+</div>
 
 </div>
 
