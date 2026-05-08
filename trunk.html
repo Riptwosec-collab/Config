@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Trunk Commands</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+
+body{
+  background:#020617;
+  color:white;
+  font-family:Arial,sans-serif;
+  padding:40px;
+}
+
+.card{
+  background:#0f172a;
+  border:1px solid #1e293b;
+  border-radius:24px;
+  padding:24px;
+}
+
+pre{
+  background:black;
+  color:#4ade80;
+  padding:20px;
+  border-radius:18px;
+}
+
+.btn{
+  background:#22d3ee;
+  color:black;
+  padding:12px 18px;
+  border-radius:12px;
+  font-weight:bold;
+  text-decoration:none;
+}
+
+</style>
+</head>
+
+<body>
+
+<a href="index.html" class="btn">
+← Back Dashboard
+</a>
+
+<div class="card mt-8">
+
+<h1 class="text-5xl font-bold text-orange-400 mb-6">
+Trunk Commands
+</h1>
+
+<pre>
+show interfaces trunk
+show interfaces switchport
+show spanning-tree
+show etherchannel summary
+</pre>
+
+<div class="mt-6 space-y-4 text-slate-300">
+
+<p>
+<strong>show interfaces trunk</strong>
+→ ดู Trunk Port
+</p>
+
+<p>
+<strong>show interfaces switchport</strong>
+→ ดู Access / Trunk
+</p>
+
+<p>
+<strong>show spanning-tree</strong>
+→ ดู STP และ Loop
+</p>
+
+<p>
+<strong>show etherchannel summary</strong>
+→ ดู Port-Channel / LACP
+</p>
+
+<p class="text-cyan-300">
+ใช้กับ: Cisco Switch
+</p>
+
+</div>
+
+</div>
+
+</body>
+</html>
