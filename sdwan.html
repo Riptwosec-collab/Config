@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SD-WAN</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+
+body{
+  background:#020617;
+  color:white;
+  font-family:Arial,sans-serif;
+  padding:40px;
+}
+
+.card{
+  background:#0f172a;
+  border:1px solid #1e293b;
+  border-radius:24px;
+  padding:24px;
+}
+
+pre{
+  background:black;
+  color:#4ade80;
+  padding:20px;
+  border-radius:18px;
+  overflow:auto;
+}
+
+.btn{
+  background:#22d3ee;
+  color:black;
+  padding:12px 18px;
+  border-radius:12px;
+  font-weight:bold;
+  text-decoration:none;
+}
+
+</style>
+</head>
+
+<body>
+
+<a href="index.html" class="btn">
+← Back Dashboard
+</a>
+
+<div class="card mt-8">
+
+<h1 class="text-5xl font-bold text-blue-400 mb-6">
+SD-WAN Commands
+</h1>
+
+<pre>
+show sdwan bfd sessions
+show sdwan omp peers
+show sdwan control connections
+show interfaces tunnel1
+show policy-map interface
+</pre>
+
+<div class="mt-6 space-y-4 text-slate-300">
+
+<p>
+<strong>show sdwan bfd sessions</strong>
+→ ดู Tunnel Health
+</p>
+
+<p>
+<strong>show sdwan omp peers</strong>
+→ ดู OMP Neighbor
+</p>
+
+<p>
+<strong>show sdwan control connections</strong>
+→ ดู Control Plane
+</p>
+
+<p>
+<strong>show interfaces tunnel1</strong>
+→ ดู Tunnel Statistics
+</p>
+
+<p>
+<strong>show policy-map interface</strong>
+→ ดู QoS / Packet Drop
+</p>
+
+<p class="text-cyan-300">
+ใช้กับ: Cisco SD-WAN Router
+</p>
+
+</div>
+
+</div>
+
+</body>
+</html>
