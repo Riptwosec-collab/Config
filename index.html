@@ -1,7 +1,6 @@
-<!-- =========================
-FILE: index.html
-========================= -->
-
+<!-- ===================================================== -->
+<!-- FILE: index.html -->
+<!-- ===================================================== -->
 <!DOCTYPE html>
 <html lang="th">
 <head>
@@ -20,56 +19,34 @@ body{
   font-family:Arial,sans-serif;
 }
 
-/* TOPBAR */
-
-.topbar{
-  background:rgba(15,23,42,.92);
-  backdrop-filter:blur(14px);
-  border:1px solid #1e293b;
-  box-shadow:0 0 30px rgba(0,0,0,.35);
-}
-
-/* HERO */
-
 .glow{
   color:#22d3ee;
   text-shadow:0 0 18px rgba(34,211,238,.45);
 }
 
-/* MENU CARD */
+.topbar{
+  background:rgba(15,23,42,.88);
+  backdrop-filter:blur(12px);
+  border:1px solid #1e293b;
+}
 
 .menu-btn{
   display:block;
-  background:linear-gradient(
-    145deg,
-    #0f172a,
-    #111827
-  );
-
+  background:#0f172a;
   border:1px solid #1e293b;
   border-radius:28px;
-
-  padding:32px;
-
-  text-decoration:none;
-  color:white;
-
+  padding:34px;
   transition:.25s;
-
-  box-shadow:
-  0 0 25px rgba(0,0,0,.35);
+  text-decoration:none;
+  box-shadow:0 0 25px rgba(0,0,0,.35);
 }
 
 .menu-btn:hover{
-  transform:translateY(-6px) scale(1.01);
-
+  transform:translateY(-6px);
   border-color:#22d3ee;
-
-  box-shadow:
-  0 0 35px rgba(34,211,238,.18);
+  background:#111827;
+  box-shadow:0 0 30px rgba(34,211,238,.18);
 }
-
-/* TITLE */
 
 .menu-title{
   font-size:32px;
@@ -78,37 +55,30 @@ body{
   line-height:1.2;
 }
 
-/* DESC */
-
 .menu-desc{
-  color:#94a3b8;
   font-size:18px;
+  color:#94a3b8;
   line-height:1.7;
 }
 
-/* SEARCH */
+.footer{
+  color:#64748b;
+  font-size:18px;
+}
 
 .search-box{
   background:#020617;
   border:1px solid #334155;
-  border-radius:18px;
+  border-radius:16px;
   padding:16px 20px;
-  color:white;
-  width:320px;
   font-size:18px;
-  outline:none;
+  width:320px;
+  color:white;
 }
 
 .search-box:focus{
+  outline:none;
   border-color:#22d3ee;
-  box-shadow:0 0 15px rgba(34,211,238,.2);
-}
-
-/* FOOTER */
-
-.footer{
-  color:#64748b;
-  font-size:16px;
 }
 
 </style>
@@ -117,329 +87,179 @@ body{
 <body>
 
 <!-- HEADER -->
-<div class="sticky top-0 z-50 px-6 pt-5">
+<div class="sticky top-0 z-50 px-6 pt-6">
+  <div class="topbar max-w-7xl mx-auto rounded-3xl px-10 py-7 flex flex-col xl:flex-row justify-between items-center">
 
-<div class="topbar max-w-7xl mx-auto rounded-[32px] px-10 py-7 flex flex-col lg:flex-row items-center justify-between gap-5">
+    <div>
+      <h1 class="text-6xl font-black glow">
+        Cisco Enterprise Dashboard
+      </h1>
 
-<div>
+      <p class="text-slate-400 text-2xl mt-4">
+        Network Engineer / NOC / Security / SD-WAN Toolkit
+      </p>
+    </div>
 
-<h1 class="text-6xl font-black glow">
-Cisco Enterprise Dashboard
-</h1>
+    <div class="mt-6 xl:mt-0">
+      <input
+        type="text"
+        placeholder="Search menu..."
+        class="search-box"
+      />
+    </div>
 
-<p class="text-slate-400 text-2xl mt-3">
-Network Engineer / NOC / SD-WAN Toolkit
-</p>
-
-</div>
-
-<input
-type="text"
-placeholder="Search menu..."
-class="search-box"
-/>
-
-</div>
-
+  </div>
 </div>
 
 <!-- HERO -->
 <div class="max-w-7xl mx-auto px-6 pt-16 pb-14">
 
-<div class="text-center mb-16">
-
-<h2 class="text-7xl font-black glow mb-6 leading-tight">
-Cisco Learning Platform
-</h2>
-
-<p class="text-slate-400 text-3xl leading-relaxed">
-VLAN / Routing / Security / SD-WAN / Wireless / Troubleshooting
-</p>
-
-</div>
-
-<!-- GRID -->
-<div class="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
-
-<!-- VLAN -->
-<a href="./vlan.html" class="menu-btn">
-
-<div class="menu-title text-green-400">
-VLAN Commands
-</div>
-
-<div class="menu-desc">
-Switch VLAN / Access Port / MAC Table / VLAN Check
-</div>
-
-</a>
-
-<!-- TRUNK -->
-<a href="./trunk.html" class="menu-btn">
-
-<div class="menu-title text-orange-400">
-Trunk Commands
-</div>
-
-<div class="menu-desc">
-Trunk Port / STP / Switchport / Allowed VLAN
-</div>
-
-</a>
-
-<!-- ROUTING -->
-<a href="./routing.html" class="menu-btn">
-
-<div class="menu-title text-emerald-400">
-Routing Commands
-</div>
-
-<div class="menu-desc">
-OSPF / BGP / MPLS / Routing Table / WAN
-</div>
-
-</a>
-
-<!-- MONITOR -->
-<a href="./monitor.html" class="menu-btn">
-
-<div class="menu-title text-pink-400">
-Monitoring
-</div>
-
-<div class="menu-desc">
-CPU / Memory / Interface / Logs / Utilization
-</div>
-
-</a>
-
-<!-- INTERNET -->
-<a href="./internet_issue.html" class="menu-btn">
-
-<div class="menu-title text-cyan-400">
-PC Internet Issue
-</div>
-
-<div class="menu-desc">
-Ping / Gateway / DHCP / ACL / DNS Troubleshoot
-</div>
-
-</a>
-
-<!-- MAC DROP -->
-<a href="./macdrop.html" class="menu-btn">
-
-<div class="menu-title text-red-400">
-MAC Drop
-</div>
-
-<div class="menu-desc">
-Port Security / Errdisable / Sticky MAC / Violation
-</div>
-
-</a>
-
-<!-- IP BLOCK -->
-<a href="./ipblock.html" class="menu-btn">
-
-<div class="menu-title text-yellow-400">
-IP Block
-</div>
-
-<div class="menu-desc">
-ACL / Firewall / Security Policy / NAT Block
-</div>
-
-</a>
-
-<!-- SECURITY -->
-<a href="./security.html" class="menu-btn">
-
-<div class="menu-title text-rose-400">
-Security
-</div>
-
-<div class="menu-desc">
-ACL / Login / Port Security / User Session
-</div>
-
-</a>
-
-<!-- SDWAN -->
-<a href="./sdwan.html" class="menu-btn">
-
-<div class="menu-title text-sky-400">
-SD-WAN
-</div>
-
-<div class="menu-desc">
-OMP / BFD / Tunnel / Control Connection
-</div>
-
-</a>
-
-<!-- WIRELESS -->
-<a href="./wireless.html" class="menu-btn">
-
-<div class="menu-title text-indigo-400">
-Wireless
-</div>
-
-<div class="menu-desc">
-AP / WLAN / Client / RF / Signal Check
-</div>
-
-</a>
-
-<!-- BACKUP -->
-<a href="./backup.html" class="menu-btn">
-
-<div class="menu-title text-purple-400">
-Backup & Logs
-</div>
-
-<div class="menu-desc">
-Archive / Syslog / Config Backup / Restore
-</div>
-
-</a>
-
-<!-- QOS -->
-<a href="./qos.html" class="menu-btn">
-
-<div class="menu-title text-blue-400">
-QoS
-</div>
-
-<div class="menu-desc">
-Traffic Policy / Queue / Packet Drop / Priority
-</div>
-
-</a>
-
-<!-- FIREWALL -->
-<a href="./firewall.html" class="menu-btn">
-
-<div class="menu-title text-red-300">
-Firewall
-</div>
-
-<div class="menu-desc">
-ACL / NAT / Session / Security Policy
-</div>
-
-</a>
-
-<!-- VPN -->
-<a href="./vpn.html" class="menu-btn">
-
-<div class="menu-title text-teal-300">
-VPN
-</div>
-
-<div class="menu-desc">
-IPsec / Tunnel / Crypto Session / Phase 1-2
-</div>
-
-</a>
-
-<!-- DHCP -->
-<a href="./dhcp.html" class="menu-btn">
-
-<div class="menu-title text-lime-300">
-DHCP
-</div>
-
-<div class="menu-desc">
-Lease / Scope / IP Assign / DHCP Binding
-</div>
-
-</a>
-
-<!-- DNS -->
-<a href="./dns.html" class="menu-btn">
-
-<div class="menu-title text-fuchsia-300">
-DNS
-</div>
-
-<div class="menu-desc">
-DNS Resolve / Name Lookup / DNS Verify
-</div>
-
-</a>
-
-<!-- INTERFACE -->
-<a href="./interface.html" class="menu-btn">
-
-<div class="menu-title text-orange-300">
-Interface Status
-</div>
-
-<div class="menu-desc">
-CRC / Duplex / Speed / Interface Error
-</div>
-
-</a>
-
-<!-- NOC -->
-<a href="./noc.html" class="menu-btn">
-
-<div class="menu-title text-cyan-300">
-NOC Dashboard
-</div>
-
-<div class="menu-desc">
-Monitoring / Incident / Network Troubleshooting
-</div>
-
-</a>
-
-<!-- AI -->
-<a href="./ai.html" class="menu-btn">
-
-<div class="menu-title text-white">
-AI Assistant
-</div>
-
-<div class="menu-desc">
-Analyze Commands / Smart Troubleshoot / AI Detection
-</div>
-
-</a>
-
-<!-- SWITCH -->
-<a href="./switch.html" class="menu-btn">
-
-<div class="menu-title text-green-300">
-Switch Commands
-</div>
-
-<div class="menu-desc">
-STP / EtherChannel / MAC Table / Port Check
-</div>
-
-</a>
-
-<!-- ROUTER -->
-<a href="./router.html" class="menu-btn">
-
-<div class="menu-title text-amber-300">
-Router Commands
-</div>
-
-<div class="menu-desc">
-Routing / WAN / MPLS / OSPF / BGP
-</div>
-
-</a>
-
-</div>
-
-<!-- FOOTER -->
-<div class="text-center footer mt-24 pb-10">
-Cisco Enterprise Dashboard • Premium Dark Network UI
-</div>
+  <div class="text-center mb-16">
+
+    <h2 class="text-7xl font-black glow mb-6">
+      Cisco Learning Platform
+    </h2>
+
+    <p class="text-slate-400 text-3xl leading-relaxed">
+      VLAN / Routing / Firewall / Wireless / SD-WAN / AI Troubleshooting
+    </p>
+
+  </div>
+
+  <!-- MENU -->
+  <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
+
+    <a href="./vlan.html" class="menu-btn">
+      <div class="menu-title text-green-400">VLAN Commands</div>
+      <div class="menu-desc">
+        VLAN / MAC Table / Access Port / Switch VLAN
+      </div>
+    </a>
+
+    <a href="./routing.html" class="menu-btn">
+      <div class="menu-title text-emerald-400">Routing</div>
+      <div class="menu-desc">
+        OSPF / BGP / MPLS / Routing Table
+      </div>
+    </a>
+
+    <a href="./monitor.html" class="menu-btn">
+      <div class="menu-title text-pink-400">Monitoring</div>
+      <div class="menu-desc">
+        CPU / Memory / Interface / Traffic
+      </div>
+    </a>
+
+    <a href="./internet_issue.html" class="menu-btn">
+      <div class="menu-title text-cyan-400">PC Internet Issue</div>
+      <div class="menu-desc">
+        Ping / Gateway / ACL / DHCP / DNS
+      </div>
+    </a>
+
+    <a href="./macdrop.html" class="menu-btn">
+      <div class="menu-title text-red-400">MAC Drop</div>
+      <div class="menu-desc">
+        Port Security / Errdisable / Sticky MAC
+      </div>
+    </a>
+
+    <a href="./ipblock.html" class="menu-btn">
+      <div class="menu-title text-yellow-400">IP Block</div>
+      <div class="menu-desc">
+        ACL / Firewall / Security Policy
+      </div>
+    </a>
+
+    <a href="./firewall.html" class="menu-btn">
+      <div class="menu-title text-orange-400">Firewall</div>
+      <div class="menu-desc">
+        ACL / NAT / Session / Security Policy
+      </div>
+    </a>
+
+    <a href="./vpn.html" class="menu-btn">
+      <div class="menu-title text-sky-400">VPN</div>
+      <div class="menu-desc">
+        IPsec / Tunnel / Crypto Session
+      </div>
+    </a>
+
+    <a href="./dhcp.html" class="menu-btn">
+      <div class="menu-title text-indigo-400">DHCP</div>
+      <div class="menu-desc">
+        Lease / Scope / IP Assignment
+      </div>
+    </a>
+
+    <a href="./dns.html" class="menu-btn">
+      <div class="menu-title text-blue-400">DNS</div>
+      <div class="menu-desc">
+        DNS Resolve / Lookup / DNS Check
+      </div>
+    </a>
+
+    <a href="./wireless.html" class="menu-btn">
+      <div class="menu-title text-violet-400">Wireless</div>
+      <div class="menu-desc">
+        AP / WLAN / Wireless Client
+      </div>
+    </a>
+
+    <a href="./sdwan.html" class="menu-btn">
+      <div class="menu-title text-teal-400">SD-WAN</div>
+      <div class="menu-desc">
+        BFD / OMP / Control Connection
+      </div>
+    </a>
+
+    <a href="./switch.html" class="menu-btn">
+      <div class="menu-title text-lime-400">Switch Commands</div>
+      <div class="menu-desc">
+        STP / EtherChannel / MAC Table
+      </div>
+    </a>
+
+    <a href="./router.html" class="menu-btn">
+      <div class="menu-title text-fuchsia-400">Router Commands</div>
+      <div class="menu-desc">
+        WAN / MPLS / OSPF / Routing
+      </div>
+    </a>
+
+    <a href="./interface.html" class="menu-btn">
+      <div class="menu-title text-amber-400">Interface Status</div>
+      <div class="menu-desc">
+        CRC / Duplex / Errors / Speed
+      </div>
+    </a>
+
+    <a href="./backup.html" class="menu-btn">
+      <div class="menu-title text-purple-400">Backup & Logs</div>
+      <div class="menu-desc">
+        Syslog / Config Backup / Archive
+      </div>
+    </a>
+
+    <a href="./noc.html" class="menu-btn">
+      <div class="menu-title text-rose-400">NOC Dashboard</div>
+      <div class="menu-desc">
+        Incident / Monitoring / Troubleshooting
+      </div>
+    </a>
+
+    <a href="./ai.html" class="menu-btn">
+      <div class="menu-title text-cyan-300">AI Assistant</div>
+      <div class="menu-desc">
+        วิเคราะห์ปัญหา Network อัตโนมัติ
+      </div>
+    </a>
+
+  </div>
+
+  <div class="text-center mt-24 footer">
+    Cisco Enterprise Dashboard • Premium Dark UI • Enterprise Edition
+  </div>
 
 </div>
 
