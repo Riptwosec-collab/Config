@@ -1,73 +1,158 @@
 <!DOCTYPE html>
-  border-color:#22d3ee;
-}
+<html lang="th">
 
-.menu-btn{
-  display:block;
-  background:#0f172a;
-  border:1px solid #1e293b;
-  padding:20px;
-  border-radius:20px;
-  text-decoration:none;
-  color:white;
-  transition:.25s;
-}
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-.menu-btn:hover{
-  background:#111827;
-  border-color:#22d3ee;
-}
-</style>
+  <title>Cisco Enterprise Dashboard</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+
+    body{
+      background:#020617;
+      color:white;
+      font-family:Arial,sans-serif;
+      min-height:100vh;
+    }
+
+    .card{
+      background:#0f172a;
+      border:1px solid #1e293b;
+      border-radius:24px;
+      padding:24px;
+      transition:.3s;
+    }
+
+    .card:hover{
+      transform:translateY(-5px);
+      border-color:#22d3ee;
+      box-shadow:0 10px 30px rgba(0,0,0,.4);
+    }
+
+    .menu-btn{
+      display:block;
+      background:#0f172a;
+      border:1px solid #1e293b;
+      padding:24px;
+      border-radius:20px;
+      text-decoration:none;
+      color:white;
+      transition:.25s;
+    }
+
+    .menu-btn:hover{
+      background:#111827;
+      border-color:#22d3ee;
+    }
+
+  </style>
+
 </head>
+
 <body>
 
-<div class="max-w-7xl mx-auto p-8">
+  <div class="max-w-7xl mx-auto p-8">
 
-  <div class="mb-10 text-center">
-    <h1 class="text-5xl font-bold text-cyan-400 mb-4">
-      Cisco Enterprise Dashboard
-    </h1>
+    <!-- HEADER -->
+    <div class="mb-12 text-center">
 
-    <p class="text-slate-400 text-lg">
-      Network Engineer / NOC / SD-WAN Toolkit
-    </p>
+      <h1 class="text-5xl font-bold text-cyan-400 mb-4">
+        Cisco Enterprise Dashboard
+      </h1>
+
+      <p class="text-slate-400 text-lg">
+        Network Engineer / NOC / SD-WAN Toolkit
+      </p>
+
+    </div>
+
+    <!-- MENU GRID -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- VLAN -->
+      <a href="vlan.html" class="menu-btn">
+
+        <h2 class="text-2xl font-bold text-green-400 mb-3">
+          VLAN Commands
+        </h2>
+
+        <p class="text-slate-400">
+          Switch VLAN / Access / MAC Table
+        </p>
+
+      </a>
+
+      <!-- TRUNK -->
+      <a href="trunk.html" class="menu-btn">
+
+        <h2 class="text-2xl font-bold text-orange-400 mb-3">
+          Trunk Commands
+        </h2>
+
+        <p class="text-slate-400">
+          Trunk / STP / Switchport
+        </p>
+
+      </a>
+
+      <!-- ROUTING -->
+      <a href="routing.html" class="menu-btn">
+
+        <h2 class="text-2xl font-bold text-emerald-400 mb-3">
+          Routing Commands
+        </h2>
+
+        <p class="text-slate-400">
+          OSPF / BGP / Routing Table
+        </p>
+
+      </a>
+
+      <!-- MONITOR -->
+      <a href="monitor.html" class="menu-btn">
+
+        <h2 class="text-2xl font-bold text-pink-400 mb-3">
+          Monitoring
+        </h2>
+
+        <p class="text-slate-400">
+          CPU / Memory / Interface
+        </p>
+
+      </a>
+
+      <!-- INTERNET -->
+      <a href="internet.html" class="menu-btn">
+
+        <h2 class="text-2xl font-bold text-cyan-400 mb-3">
+          PC Internet Issue
+        </h2>
+
+        <p class="text-slate-400">
+          Ping / Gateway / ACL
+        </p>
+
+      </a>
+
+      <!-- MAC DROP -->
+      <a href="macdrop.html" class="menu-btn">
+
+        <h2 class="text-2xl font-bold text-red-400 mb-3">
+          MAC Drop
+        </h2>
+
+        <p class="text-slate-400">
+          Port Security / Errdisable
+        </p>
+
+      </a>
+
+    </div>
+
   </div>
-
-  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-    <a href="vlan.html" class="menu-btn">
-      <h2 class="text-2xl font-bold text-green-400 mb-3">VLAN Commands</h2>
-      <p class="text-slate-400">Switch VLAN / Access / MAC Table</p>
-    </a>
-
-    <a href="trunk.html" class="menu-btn">
-      <h2 class="text-2xl font-bold text-orange-400 mb-3">Trunk Commands</h2>
-      <p class="text-slate-400">Trunk / STP / Switchport</p>
-    </a>
-
-    <a href="routing.html" class="menu-btn">
-      <h2 class="text-2xl font-bold text-emerald-400 mb-3">Routing Commands</h2>
-      <p class="text-slate-400">OSPF / BGP / Routing Table</p>
-    </a>
-
-    <a href="monitor.html" class="menu-btn">
-      <h2 class="text-2xl font-bold text-pink-400 mb-3">Monitoring</h2>
-      <p class="text-slate-400">CPU / Memory / Interface</p>
-    </a>
-
-    <a href="internet.html" class="menu-btn">
-      <h2 class="text-2xl font-bold text-cyan-400 mb-3">PC Internet Issue</h2>
-      <p class="text-slate-400">Ping / Gateway / ACL</p>
-    </a>
-
-    <a href="macdrop.html" class="menu-btn">
-      <h2 class="text-2xl font-bold text-red-400 mb-3">MAC Drop</h2>
-      <p class="text-slate-400">Port Security / Errdisable</p>
-    </a>
-
-  </div>
-
-</div>
 
 </body>
 </html>
